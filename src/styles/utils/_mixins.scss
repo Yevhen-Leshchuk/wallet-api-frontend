@@ -22,3 +22,21 @@
   text-transform: $transform;
   text-align: $text-align;
 }
+
+@mixin mobile {
+  @media screen and (min-width: 0px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}

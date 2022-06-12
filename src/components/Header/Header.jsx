@@ -1,11 +1,13 @@
-import Container from 'components/Container';
+// import { Link } from 'react-router-dom';
+import UserMenu from 'components/UserMenu';
 import s from './Header.module.scss';
 
 const Header = () => {
   return (
-    <Container>
-      <p>This is Header</p>
-    </Container>
+    <header className={s.header}>
+      <div className={s.logoBox}></div>
+      <UserMenu />
+    </header>
   );
 };
 

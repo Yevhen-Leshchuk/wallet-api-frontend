@@ -5,12 +5,10 @@ import s from './Layout.module.scss';
 
 function Layout() {
   return (
-    <div className={s.layout}>
-      <Container>
-        <Header />
-        <Outlet />
-      </Container>
-    </div>
+    <Container>
+      <Header />
+      <Outlet />
+    </Container>
   );
 }
 

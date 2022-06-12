@@ -1,1 +1,60 @@
 @import 'styles/shared.scss';
+
+.userBox {
+  display: flex;
+  align-items: center;
+}
+
+.userAvatarBox {
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
+
+  border-radius: 50%;
+  background-color: $lightGray7;
+}
+
+.userImg {
+  width: 100%;
+}
+
+.userName {
+  display: none;
+
+  @include tablet() {
+    display: inline-block;
+    margin: 0px 20px 0px 0px;
+    padding: 11px 20px 11px 0px;
+    border-right: 1px solid $lightGray8;
+  }
+}
+
+.logoutBtn {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  border-style: none;
+  background: transparent;
+  cursor: pointer;
+
+  @include tablet() {
+    width: 40px;
+  }
+}
+
+.logoutImg {
+  @include tablet() {
+    display: none;
+  }
+}
+
+.logoutText {
+  @include mobile() {
+    display: none;
+  }
+
+  width: 40px;
+  @include fontProperty();
+  border-bottom: 1px solid $darkGray;
+}
