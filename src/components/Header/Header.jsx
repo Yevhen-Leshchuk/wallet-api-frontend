@@ -5,9 +5,7 @@ import s from './Header.module.scss';
 const Header = () => {
   return (
     <header className={s.header}>
-      <Link to="/" alt="authpage" className={s.logoBox}>
-        <div></div>
-      </Link>
+      <Link to="/" alt="authpage" className={s.logoBox}></Link>
       <UserMenu />
     </header>
   );

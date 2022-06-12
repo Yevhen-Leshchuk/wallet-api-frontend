@@ -1,5 +1,36 @@
 @import 'styles/shared.scss';
 
-.authTitle {
-  font-size: 45px;
+.authBox {
+  display: block;
+  justify-content: center;
+  width: 100%;
+
+  min-height: calc(100vh - 60px);
+  @include mobile() {
+    background: url(../../images/img/auth-page/main_logo-mobile.png),
+      url(../../images/img/auth-page/auth_page-cabbage-mobile.png),
+      url(../../images/img/auth-page/auth_page-small_cabbage-mobile.png),
+      url(../../images/img/auth-page/auth_page-bg-mobile.png);
+    background-repeat: no-repeat;
+    background-position: 49px 86px, 265px 104px, 35px bottom, 0px 0px;
+  }
+
+  @include tablet() {
+    background: url(../../images/img/auth-page/main_logo-tablet.png),
+      url(../../images/img/auth-page/auth_page-cabbage-tablet.png),
+      url(../../images/img/auth-page/auth_page-small_cabbage-tablet.png),
+      url(../../images/img/auth-page/auth_page-bg-tablet.png);
+    background-position: 171px 90px, 0px 30px, 105px 770px, 0px 0px;
+    background-repeat: no-repeat;
+  }
+
+  @include desktop() {
+    background: url(../../images/img/auth-page/main_logo-desktop.png),
+      url(../../images/img/auth-page/auth_page-cabbage-desktop.png),
+      url(../../images/img/auth-page/auth_page-small_cabbage-desktop.png),
+      url(../../images/img/auth-page/auth_page-bg-desktop.png);
+    background-position: 230px 360px, 0px 30px, 105px 770px, 0px 0px;
+
+    background-repeat: no-repeat;
+  }
 }

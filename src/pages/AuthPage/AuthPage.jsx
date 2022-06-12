@@ -1,7 +1,7 @@
 import s from './AuthPage.module.scss';
 
 const AuthPage = () => {
-  return <h1 className={s.authTitle}>AuthPage</h1>;
+  return <div className={s.authBox}></div>;
 };
 
 export default AuthPage;
