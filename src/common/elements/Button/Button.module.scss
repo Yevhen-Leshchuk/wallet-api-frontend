@@ -1,1 +1,31 @@
 @import 'styles/shared.scss';
+
+.button {
+  width: 125px;
+  height: 44px;
+
+  @include fontProperty(
+    $transform: uppercase,
+    $weight: 700,
+    $letter-spacing: 0.02em
+  );
+
+  color: $darkGray;
+  background-color: $lightGray1;
+
+  border: 2px solid $lightGray5;
+  border-radius: 16px;
+  box-shadow: $btnShadowNormal;
+  outline: none;
+
+  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+}
+
+.button:hover,
+.button:focus {
+  background-color: $orange;
+  color: $white;
+  border: $orange;
+
+  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+}
