@@ -20,6 +20,10 @@ const ReportPage = lazy(() =>
   import('pages/ReportPage/ReportPage' /* webpackChunkName: "ReportPage" */)
 );
 
+const MobilePage = lazy(() =>
+  import('pages/MobilePage/MobilePage' /* webpackChunkName: "MobilePage" */)
+);
+
 function App() {
   return (
     <>
@@ -30,6 +34,7 @@ function App() {
             <Route path="expenses" element={<ExpensesPage />} />
             <Route path="incomes" element={<IncomesPage />} />
             <Route path="report" element={<ReportPage />} />
+            <Route path="mobile" element={<MobilePage />} />
           </Route>
         </Routes>
       </Suspense>

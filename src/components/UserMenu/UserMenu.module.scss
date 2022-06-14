@@ -44,9 +44,31 @@
 }
 
 .logoutImg {
+  width: 16px;
+  height: 16px;
+  fill: #cbccd0;
+
+  transition: fill 0.25s $cubicBezier;
+
   @include tablet() {
     display: none;
   }
+}
+
+.logoutBtn:hover svg,
+.logoutBtn:focus svg {
+  fill: $orange;
+  color: $orange;
+
+  transition: fill 0.25s $cubicBezier;
+}
+
+.logoutBtn:hover .logoutText,
+.logoutBtn:focus .logoutText {
+  color: $orange;
+  border-bottom: 1px solid $orange;
+
+  transition: border-color 0.25s, color 0.25s $cubicBezier;
 }
 
 .logoutText {

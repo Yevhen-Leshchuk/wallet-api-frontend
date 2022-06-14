@@ -10,7 +10,7 @@ const UserMenu = () => {
       </div>
       <p className={s.userName}>User name</p>
       <button type="button" className={s.logoutBtn}>
-        <svg className={s.logoutImg} width="16" height="16">
+        <svg className={s.logoutImg}>
           <use xlinkHref={`${sprite}#logout`} />
         </svg>
         <p className={s.logoutText}>Выйти</p>

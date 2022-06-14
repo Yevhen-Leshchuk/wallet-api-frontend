@@ -1,1 +1,41 @@
 @import 'styles/shared.scss';
+
+.expensesBox {
+  display: block;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
+
+  min-height: calc(100vh - 60px);
+  @include mobile() {
+    background: url(../../images/img/auth-page/auth_page-bg-mobile.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+  }
+}
+
+.reportLinkBox {
+  display: flex;
+  align-items: center;
+  width: 154px;
+  height: 24px;
+  margin-left: auto;
+  margin-bottom: 40px;
+  margin-right: auto;
+}
+
+.reportLinkIconBox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.reportLinkText {
+  margin-right: 15px;
+}
+
+.reportLinkIcon {
+  width: 20px;
+  height: 20px;
+}

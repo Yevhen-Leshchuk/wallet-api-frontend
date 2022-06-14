@@ -1,0 +1,44 @@
+@import 'styles/shared.scss';
+
+.navTransactionBox {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 53px;
+}
+
+.navTransactionLink {
+  display: block;
+  width: 159px;
+  height: 53px;
+  margin-right: 2px;
+  padding-top: 21px;
+
+  background-color: $lightGray1;
+  @include fontProperty(
+    $color: $black,
+    $weight: 700,
+    $size: 12px,
+    $text-align: center,
+    $transform: uppercase
+  );
+
+  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+}
+
+.navTransactionLink:hover,
+.navTransactionLink:focus {
+  background-color: $orange;
+  color: $white;
+  border: $orange;
+
+  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+}
+
+.navTransactionLinkIncomes {
+  composes: navTransactionLink;
+  margin-right: 0;
+}

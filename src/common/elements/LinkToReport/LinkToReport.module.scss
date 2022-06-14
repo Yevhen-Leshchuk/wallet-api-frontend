@@ -1,0 +1,47 @@
+@import 'styles/shared.scss';
+
+.reportLinkBox {
+  width: 154px;
+  height: 24px;
+  margin-left: auto;
+  margin-bottom: 40px;
+  margin-right: auto;
+}
+
+.reportLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include fontProperty();
+}
+
+.reportLinkIconBox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.reportLinkText {
+  margin-right: 15px;
+}
+
+.reportLinkIcon {
+  width: 20px;
+  height: 20px;
+  fill: $darkGray;
+
+  transition: fill 0.25s $cubicBezier;
+}
+
+.reportLinkBox a:hover svg,
+.reportLinkBox a:focus svg {
+  fill: $orange;
+  transition: fill 0.25s $cubicBezier;
+}
+
+.reportLinkBox a:hover .reportLinkText,
+.reportLinkBox a:focus .reportLinkText {
+  color: $orange;
+  transition: fill 0.25s $cubicBezier;
+}

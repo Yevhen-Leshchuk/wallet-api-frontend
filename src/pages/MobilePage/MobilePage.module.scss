@@ -1,0 +1,15 @@
+@import 'styles/shared.scss';
+
+.mobileBox {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-top: 30px;
+
+  min-height: calc(100vh - 60px);
+  @include mobile() {
+    background: url(../../images/img/auth-page/auth_page-bg-mobile.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+  }
+}

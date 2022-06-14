@@ -8,11 +8,13 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 
   width: 300px;
   height: 525px;
   margin: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
   border-radius: 30px;
   background-color: $white;
   background-color: hsla(0, 0%, 100%, 0.9);
@@ -119,8 +121,8 @@
 
 .input {
   display: block;
-  width: 213px;
-  height: 18px;
+  width: 253px;
+  height: 52px;
   margin-bottom: 4px;
   padding: 17px 20px;
   border: none;
@@ -138,7 +140,7 @@
   }
 
   @include tablet() {
-    width: 225px;
+    width: 265px;
   }
 }
 
