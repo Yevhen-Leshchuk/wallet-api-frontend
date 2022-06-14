@@ -1,0 +1,37 @@
+@import 'styles/shared.scss';
+
+.calendarBox {
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 105px;
+  height: 40px;
+}
+
+.calendarIconBox {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.calendarIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.datePicker {
+  width: 75px;
+  height: 40px;
+
+  @include fontProperty(
+    $weight: 900,
+    $size: 12px,
+    $height: 1.17,
+    $transform: uppercase
+  );
+
+  background-color: transparent;
+  border-color: transparent;
+}

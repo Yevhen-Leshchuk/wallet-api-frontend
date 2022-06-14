@@ -6,7 +6,7 @@
   width: 100%;
   padding-top: 30px;
 
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 56px);
   @include mobile() {
     background: url(../../images/img/auth-page/auth_page-bg-mobile.png);
     background-repeat: no-repeat;
