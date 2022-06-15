@@ -21,6 +21,10 @@
   background: transparent;
 
   @include fontProperty($weight: 700, $color: $black, $letter-spacing: 0.02em);
+
+  &::placeholder {
+    opacity: 1;
+  }
 }
 
 .balanceFormBtn {

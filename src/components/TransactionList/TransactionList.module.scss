@@ -1,1 +1,6 @@
 @import 'styles/shared.scss';
+
+.expensesListBox {
+  height: 150px;
+  overflow-y: scroll;
+}

@@ -27,13 +27,13 @@ const AuthForm = () => {
 
   return (
     <div className={s.formBox}>
-      <p className={s.googleText}>Вы можете авторизоваться с помощью</p>
+      <p className={s.googleText}>Вы можете авторизоваться c помощью</p>
       <p className={s.googleText}>Google Account:</p>
       <button type="submit" className={s.buttonGoogle}>
         <div className={s.googleLogo}></div>
         <p className={s.btnText}>Google</p>
       </button>
-      <p className={s.googleText}>Или зайти с помощью e-mail и пароля,</p>
+      <p className={s.googleText}>Или зайти c помощью e-mail и пароля,</p>
       <p className={s.googleText}>предварительно зарегистрировавшись:</p>
 
       <Formik

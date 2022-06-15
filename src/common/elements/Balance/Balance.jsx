@@ -10,6 +10,7 @@ const Balance = () => {
           name="balance"
           type="text"
           placeholder="00.00 €"
+          autoComplete="off"
         />
         <button className={s.balanceFormBtn} type="submit">
           Подтвердить

@@ -1,0 +1,64 @@
+@import 'styles/shared.scss';
+
+.expListItem {
+  position: relative;
+  width: 282px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 7px;
+
+  border-bottom: 2px solid $lightGray1;
+}
+
+.expListItemBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expListItemDesc {
+  position: absolute;
+  top: 3px;
+  left: 0;
+
+  width: 168px;
+  height: 28px;
+  overflow: hidden;
+
+  @include fontProperty($weight: 700, $text-align: left);
+}
+
+.expListItemDate {
+  margin-top: 32px;
+  margin-right: 20px;
+
+  @include fontProperty($size: 8px, $height: 1.125, $transform: uppercase);
+}
+
+.expListItemCategory {
+  margin-top: 32px;
+  margin-right: 80px;
+
+  @include fontProperty($size: 8px, $height: 1.125, $transform: uppercase);
+}
+
+.expListItemPrice {
+  margin-top: auto;
+  margin-right: 20px;
+  margin-bottom: auto;
+
+  @include fontProperty($weight: 700, $color: $red1);
+}
+
+.expListItemIconBox {
+  width: 18px;
+  height: 18px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.expListItemIcon {
+  width: 18px;
+  height: 18px;
+}

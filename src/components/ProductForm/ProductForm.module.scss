@@ -1,1 +1,155 @@
 @import 'styles/shared.scss';
+
+.productFormDescInput {
+  width: 282px;
+  height: 44px;
+  padding: 2px 20px 2px 20px;
+
+  background-color: transparent;
+  border: 2px solid $white;
+  border-bottom: 1px solid $white;
+  border-radius: 22px 22px 0px 0px;
+
+  &::placeholder {
+    @include fontProperty(
+      $color: $lightGray6,
+      $letter-spacing: 0.02em,
+      $text-align: left
+    );
+  }
+}
+
+.productFormCategoryLabel {
+  position: relative;
+}
+
+.productFormCategoryInput {
+  composes: productFormDescInput;
+  margin-bottom: 30px;
+
+  border-radius: 0px 0px 22px 0px;
+  border-top: 1px solid $white;
+  border-bottom: 2px solid $white;
+}
+
+.arrowDownIconBox {
+  position: absolute;
+  top: -3px;
+  right: 20px;
+
+  width: 10px;
+  height: 10px;
+
+  border-style: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.arrowDownIcon {
+  width: 10px;
+  height: 10px;
+
+  transition: stroke 0.25s $cubicBezier;
+  stroke: $lightGray6;
+}
+
+.arrowUpIconBox {
+  composes: arrowDownIconBox;
+}
+
+.arrowUpIcon {
+  composes: arrowDownIcon;
+}
+
+.arrowDownIconBox:hover svg,
+.arrowDownIconBox:focus svg {
+  stroke: $orange;
+
+  transition: stroke 0.25s $cubicBezier;
+}
+
+.calculatorIconBox {
+  width: 17px;
+  height: 20px;
+}
+
+.calculatorIcon {
+  width: 17px;
+  height: 20px;
+}
+
+.productFormListBox {
+  width: 282px;
+  max-height: 300px;
+  position: absolute;
+  top: 27px;
+  left: 0;
+
+  background-color: $white;
+
+  overflow-y: scroll;
+  border: 2px solid $lightGray1;
+  border-top: transparent;
+  box-shadow: $shadowCategoryBox;
+}
+
+.productFormListItem {
+  width: 100%;
+  height: 34px;
+  padding: 10px 20px;
+
+  @include fontProperty($color: $lightGray6, $text-align: left);
+
+  &:hover {
+    background-color: $lightGray1;
+    @include fontProperty($color: $darkGray, $text-align: left);
+  }
+}
+
+.productAmountBox {
+  display: flex;
+  align-items: center;
+
+  width: 183px;
+  height: 44px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 150px;
+}
+
+.productAmountInput {
+  width: 121px;
+  height: 44px;
+
+  padding: 15px 15px 15px 45px;
+
+  border: 2px solid $white;
+  border-right: 1px solid $white;
+  border-radius: 22px 0px 0px 22px;
+  background-color: transparent;
+
+  @include fontProperty(
+    $weight: 700,
+    $color: $black,
+    $letter-spacing: 0.02em,
+    $text-align: left,
+    $transform: uppercase
+  );
+
+  &::placeholder {
+    opacity: 1;
+  }
+}
+
+.calculatorIconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 44px;
+
+  border: 2px solid $white;
+  border-left: 1px solid $white;
+  border-radius: 0px 22px 22px 0px;
+  background-color: transparent;
+}
