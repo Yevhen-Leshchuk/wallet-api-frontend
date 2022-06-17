@@ -13,29 +13,38 @@
     background-repeat: no-repeat;
     background-position: 0px 0px;
   }
+
+  @include tablet() {
+    background: url(../../images/img/auth-page/auth_page-bg-tablet.png),
+      url(../../images/img/auth-page/auth_page-small_cabbage-desktop.png);
+    background-position: 0px 0px, 500px 1000px;
+    background-repeat: no-repeat;
+  }
+
+  @include tablet {
+    padding: 40px 50px;
+  }
 }
 
-.reportLinkBox {
+.productFormBox {
+  width: 665px;
+  height: 626px;
+  padding: 30px;
+
+  background-color: $white;
+  box-shadow: $shadowProductFormBox;
+  border-radius: 0px 30px 30px 30px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.balanceBox {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  width: 154px;
-  height: 24px;
-  margin-left: auto;
-  margin-bottom: 40px;
-  margin-right: auto;
-}
 
-.reportLinkIconBox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
-.reportLinkText {
-  margin-right: 15px;
-}
-
-.reportLinkIcon {
-  width: 20px;
-  height: 20px;
+  width: 665px;
+  margin-bottom: 60px;
 }

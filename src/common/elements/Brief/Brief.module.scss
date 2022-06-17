@@ -1,0 +1,37 @@
+@import 'styles/shared.scss';
+
+.briefBox {
+  width: 230px;
+  height: 286px;
+
+  background-color: $lightGray1;
+  border: 2px solid $white;
+  border-radius: 22px 29px 23px 0px;
+}
+
+.briefList {
+  width: 230px;
+  height: 286px;
+
+  border: 2px solid $white;
+}
+
+.briefListItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 230px;
+  height: 40px;
+  padding: 15px 22px;
+
+  border-bottom: 2px solid $white;
+}
+
+.briefListItemHeader {
+  @include fontProperty($weight: 700, $transform: uppercase);
+}
+
+.briefListText {
+  @include fontProperty($transform: uppercase, $text-align: left);
+}

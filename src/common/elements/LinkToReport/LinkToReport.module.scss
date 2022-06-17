@@ -6,6 +6,12 @@
   margin-left: auto;
   margin-bottom: 40px;
   margin-right: auto;
+
+  @include tablet {
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+  }
 }
 
 .reportLink {

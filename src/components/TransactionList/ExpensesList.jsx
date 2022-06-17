@@ -3,19 +3,19 @@ import s from './TransactionList.module.scss';
 
 const ExpensesList = () => {
   return (
-    <div>
-      <div>
-        {/* <ul>
-          <li>Дата</li>
-          <li>Описание</li>
-          <li>Категория</li>
-          <li>Сумма</li>
-        </ul> */}
-        <ul className={s.expensesListBox}>
+    <>
+      <ul className={s.expListHeader}>
+        <li className={s.expListHeaderItem}>Дата</li>
+        <li className={s.expListHeaderItem}>Описание</li>
+        <li className={s.expListHeaderItem}>Категория</li>
+        <li className={s.expListHeaderItem}>Сумма</li>
+      </ul>
+      <div className={s.expListBox}>
+        <ul className={s.expListItemBox}>
           <ExpensesListItem />
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

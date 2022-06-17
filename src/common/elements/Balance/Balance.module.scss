@@ -2,12 +2,24 @@
 
 .balanceBox {
   margin-bottom: 40px;
+
+  @include tablet() {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 0;
+  }
 }
 
 .balanceTitle {
   margin-bottom: 6px;
 
   @include fontProperty($weight: 500, $letter-spacing: 0.02em);
+
+  @include tablet() {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
 }
 
 .balanceFormInput {
@@ -25,6 +37,12 @@
   &::placeholder {
     opacity: 1;
   }
+
+  @include tablet() {
+    margin-right: 15px;
+    border: 2px solid $white;
+    border-radius: 22px 22px 22px 22px;
+  }
 }
 
 .balanceFormBtn {
@@ -41,6 +59,11 @@
   @include fontProperty($transform: uppercase, $letter-spacing: 0.02em);
 
   transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+
+  @include tablet() {
+    border: 2px solid $white;
+    border-radius: 22px 22px 22px 22px;
+  }
 }
 
 .balanceFormBtn:hover,

@@ -9,6 +9,14 @@
   margin-bottom: 120px;
   width: 105px;
   height: 40px;
+
+  @include tablet {
+    height: 44px;
+
+    margin-left: 0;
+    margin-right: 33px;
+    margin-bottom: 0;
+  }
 }
 
 .calendarIconBox {

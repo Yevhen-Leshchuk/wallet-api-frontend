@@ -17,8 +17,13 @@
   border-radius: 16px;
   box-shadow: $btnShadowNormal;
   outline: none;
+  cursor: pointer;
 
   transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+
+  @include tablet {
+    background-color: transparent;
+  }
 }
 
 .button:hover,

@@ -9,12 +9,23 @@
   padding-bottom: 7px;
 
   border-bottom: 2px solid $lightGray1;
+
+  @include tablet {
+    width: 599px;
+    height: 40px;
+    padding-bottom: 0;
+  }
 }
 
 .expListItemBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include tablet {
+    justify-content: normal;
+    padding: 13px 20px 13px 30px;
+  }
 }
 
 .expListItemDesc {
@@ -27,6 +38,17 @@
   overflow: hidden;
 
   @include fontProperty($weight: 700, $text-align: left);
+
+  @include tablet {
+    position: static;
+    order: 2;
+    width: 132px;
+    height: 14px;
+    margin-right: 40px;
+    overflow: hidden;
+
+    @include fontProperty($size: 12px, $height: 1.17, $text-align: left);
+  }
 }
 
 .expListItemDate {
@@ -34,6 +56,14 @@
   margin-right: 20px;
 
   @include fontProperty($size: 8px, $height: 1.125, $transform: uppercase);
+
+  @include tablet {
+    order: 1;
+    margin-top: 0;
+    margin-right: 83px;
+
+    @include fontProperty($size: 12px, $height: 1.17);
+  }
 }
 
 .expListItemCategory {
@@ -41,6 +71,14 @@
   margin-right: 80px;
 
   @include fontProperty($size: 8px, $height: 1.125, $transform: uppercase);
+
+  @include tablet {
+    order: 3;
+    margin-top: 0;
+    margin-right: 60px;
+
+    @include fontProperty($size: 12px, $height: 1.17);
+  }
 }
 
 .expListItemPrice {
@@ -49,16 +87,48 @@
   margin-bottom: auto;
 
   @include fontProperty($weight: 700, $color: $red1);
+
+  @include tablet {
+    width: 80px;
+    order: 4;
+    margin-top: 0;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
 }
 
-.expListItemIconBox {
+.expListItemBtnBox {
   width: 18px;
   height: 18px;
   margin-top: auto;
   margin-bottom: auto;
+
+  @include tablet {
+    order: 5;
+    margin: 0;
+  }
+}
+
+.expListItemBtn {
+  width: 18px;
+  height: 18px;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .expListItemIcon {
   width: 18px;
   height: 18px;
+
+  fill: $darkGray;
+  transition: fill 0.25s $cubicBezier;
+}
+
+.expListItemBtn:hover svg,
+.expListItemBtn:focus svg {
+  fill: $orange;
+
+  transition: fill 0.25s $cubicBezier;
 }

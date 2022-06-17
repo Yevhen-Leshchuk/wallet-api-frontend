@@ -8,6 +8,10 @@
   align-items: center;
   width: 100%;
   height: 53px;
+
+  @include tablet {
+    position: relative;
+  }
 }
 
 .navTransactionLink {
@@ -18,6 +22,7 @@
   padding-top: 21px;
 
   background-color: $lightGray1;
+
   @include fontProperty(
     $color: $black,
     $weight: 700,
@@ -27,6 +32,12 @@
   );
 
   transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+
+  @include tablet {
+    background-color: $lightGray4;
+    margin-right: 0;
+    border-radius: 22px 22px 0px 0px;
+  }
 }
 
 .navTransactionLink:hover,
@@ -36,6 +47,12 @@
   border: $orange;
 
   transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+
+  @include tablet {
+    background-color: $lightGray10;
+    color: $orange;
+    border: $lightGray10;
+  }
 }
 
 .navTransactionLinkIncomes {

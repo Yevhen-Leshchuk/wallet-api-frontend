@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import GoBackLink from 'common/elements/GoBackLink';
 import Button from 'common/elements/Button';
+import Calendar from 'common/elements/Calendar';
 import sprite from '../../images/svg/sprite.svg';
 import s from './ProductForm.module.scss';
 
@@ -14,6 +15,7 @@ const ProductForm = () => {
     <>
       <GoBackLink redirectTo="/mobile" />
       <div className={s.productFormBox}>
+        <Calendar />
         <form className={s.productForm} onSubmit={null}>
           <input
             placeholder="Описание товара"
@@ -88,8 +90,21 @@ const ProductForm = () => {
           </div>
         </form>
       </div>
-      <Button text="Ввод" style={{ marginRight: '15px' }} />
-      <Button text="Очистить" />
+      <Button
+        text="Ввод"
+        style={{
+          marginRight: '15px',
+          border: '2px solid #F6F7FC',
+          boxShadow: 'none',
+        }}
+      />
+      <Button
+        text="Очистить"
+        style={{
+          border: '2px solid #F6F7FC',
+          boxShadow: 'none',
+        }}
+      />
     </>
   );
 };

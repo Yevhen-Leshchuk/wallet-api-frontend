@@ -1,5 +1,20 @@
 @import 'styles/shared.scss';
 
+.productFormBox {
+  @include tablet {
+    display: flex;
+    width: 604px;
+
+    margin-bottom: 30px;
+  }
+}
+
+.productForm {
+  @include tablet {
+    display: flex;
+  }
+}
+
 .productFormDescInput {
   width: 282px;
   height: 44px;
@@ -17,10 +32,23 @@
       $text-align: left
     );
   }
+
+  @include tablet {
+    order: 1;
+
+    width: 192px;
+    border: 2px solid $lightGray1;
+    border-right: 1px solid $lightGray1;
+    border-radius: 22px 0px 0px 0px;
+  }
 }
 
 .productFormCategoryLabel {
   position: relative;
+
+  @include tablet {
+    order: 2;
+  }
 }
 
 .productFormCategoryInput {
@@ -30,6 +58,16 @@
   border-radius: 0px 0px 22px 0px;
   border-top: 1px solid $white;
   border-bottom: 2px solid $white;
+
+  @include tablet {
+    width: 171px;
+    margin-bottom: 0;
+
+    border-radius: 0;
+    border: 2px solid $lightGray1;
+    border-left: 1px solid $lightGray1;
+    border-right: 1px solid $lightGray1;
+  }
 }
 
 .arrowDownIconBox {
@@ -43,6 +81,10 @@
   border-style: none;
   background: transparent;
   cursor: pointer;
+
+  @include tablet {
+    top: 13px;
+  }
 }
 
 .arrowDownIcon {
@@ -80,7 +122,7 @@
 
 .productFormListBox {
   width: 282px;
-  max-height: 300px;
+  max-height: 365px;
   position: absolute;
   top: 27px;
   left: 0;
@@ -91,6 +133,11 @@
   border: 2px solid $lightGray1;
   border-top: transparent;
   box-shadow: $shadowCategoryBox;
+
+  @include tablet {
+    width: 171px;
+    top: 44px;
+  }
 }
 
 .productFormListItem {
@@ -115,6 +162,14 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 150px;
+
+  @include tablet {
+    order: 3;
+    width: 105px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
 }
 
 .productAmountInput {
@@ -139,12 +194,24 @@
   &::placeholder {
     opacity: 1;
   }
+
+  @include tablet {
+    width: 65px;
+    padding: 15px 10px 15px 10px;
+
+    border: 2px solid $lightGray1;
+    border-right: 1px solid transparent;
+    border-left: 1px solid $lightGray1;
+    border-radius: 0;
+
+    @include fontProperty($weight: 400, $color: $lightGray6);
+  }
 }
 
 .calculatorIconBox {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   width: 56px;
   height: 44px;
 
@@ -152,4 +219,11 @@
   border-left: 1px solid $white;
   border-radius: 0px 22px 22px 0px;
   background-color: transparent;
+
+  @include tablet {
+    width: 40px;
+
+    border: 2px solid $lightGray1;
+    border-left: 1px solid $white;
+  }
 }
