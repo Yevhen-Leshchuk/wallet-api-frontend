@@ -55,6 +55,11 @@
   }
 }
 
+.activeLink {
+  composes: navTransactionLink;
+  color: $orange;
+}
+
 .navTransactionLinkIncomes {
   composes: navTransactionLink;
   margin-right: 0;

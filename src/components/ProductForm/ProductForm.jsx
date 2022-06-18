@@ -3,9 +3,13 @@ import GoBackLink from 'common/elements/GoBackLink';
 import Button from 'common/elements/Button';
 import Calendar from 'common/elements/Calendar';
 import sprite from '../../images/svg/sprite.svg';
+import useMediaQuery from 'common/hooks/mediaRulesHook';
 import s from './ProductForm.module.scss';
 
 const ProductForm = () => {
+  const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
+  const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
+
   const [showCategory, setShowCategory] = useState(false);
 
   const handleShowCategory = () => {
@@ -15,7 +19,7 @@ const ProductForm = () => {
     <>
       <GoBackLink redirectTo="/mobile" />
       <div className={s.productFormBox}>
-        <Calendar />
+        {tabletMediaQuery && <Calendar />}
         <form className={s.productForm} onSubmit={null}>
           <input
             placeholder="Описание товара"

@@ -17,6 +17,10 @@
     margin-right: 33px;
     margin-bottom: 0;
   }
+
+  @include desktop {
+    margin-right: 23px;
+  }
 }
 
 .calendarIconBox {

@@ -6,14 +6,21 @@
 
   background-color: $lightGray1;
   border: 2px solid $white;
-  border-radius: 22px 29px 23px 0px;
+  border-radius: 22px 22px 22px 0px;
+
+  @include desktop {
+    position: absolute;
+    top: 285px;
+    right: 130px;
+  }
 }
 
 .briefList {
   width: 230px;
-  height: 286px;
+  height: 283px;
 
   border: 2px solid $white;
+  border-radius: 22px 22px 22px 0px;
 }
 
 .briefListItem {
@@ -34,4 +41,8 @@
 
 .briefListText {
   @include fontProperty($transform: uppercase, $text-align: left);
+}
+
+.briefListItem:last-child {
+  border-radius: 22px 22px 22px 0px;
 }

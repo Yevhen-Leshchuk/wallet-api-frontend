@@ -7,6 +7,10 @@
   border-top: none;
   border-right: 6px solid #f5f6fb;
   border-bottom: none;
+
+  @include desktop {
+    width: 760px;
+  }
 }
 
 .expListHeader {
@@ -19,6 +23,11 @@
   margin-top: 50px;
   background-color: $lightGray1;
   border-radius: 22px 22px 0px 0px;
+
+  @include desktop {
+    width: 760px;
+    margin-top: 0;
+  }
 }
 
 .expListHeaderItem {
@@ -31,12 +40,16 @@
 }
 
 .expListItemBox {
-  height: 150px;
+  height: 300px;
   overflow-y: scroll;
 
   @include tablet {
     width: 605px;
     height: 346px;
+  }
+
+  @include desktop {
+    width: 760px;
   }
 }
 

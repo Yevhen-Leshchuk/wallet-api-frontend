@@ -1,20 +1,28 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import s from './NavTransaction.module.scss';
 
 const NavTransaction = () => {
   return (
     <div className={s.navTransactionBox}>
-      <Link to="/expenses" alt="expensesPage" className={s.navTransactionLink}>
+      <NavLink
+        to="/expenses"
+        alt="expensesPage"
+        className={({ isActive }) =>
+          isActive ? `${s.activeLink}` : `${s.navTransactionLink}`
+        }
+      >
         Расход
-      </Link>
+      </NavLink>
 
-      <Link
+      <NavLink
         to="/incomes"
         alt="incomesPage"
-        className={s.navTransactionLinkIncomes}
+        className={({ isActive }) =>
+          isActive ? `${s.activeLink}` : `${s.navTransactionLinkIncomes}`
+        }
       >
         Доход
-      </Link>
+      </NavLink>
     </div>
   );
 };

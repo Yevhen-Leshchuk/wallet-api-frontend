@@ -7,11 +7,21 @@
 
     margin-bottom: 30px;
   }
+
+  @include desktop {
+    width: 730px;
+    margin-right: 25px;
+    margin-bottom: 60px;
+  }
 }
 
 .productForm {
   @include tablet {
     display: flex;
+  }
+
+  @include desktop {
+    width: 600px;
   }
 }
 
@@ -41,6 +51,10 @@
     border-right: 1px solid $lightGray1;
     border-radius: 22px 0px 0px 0px;
   }
+
+  @include desktop {
+    width: 290px;
+  }
 }
 
 .productFormCategoryLabel {
@@ -67,6 +81,10 @@
     border: 2px solid $lightGray1;
     border-left: 1px solid $lightGray1;
     border-right: 1px solid $lightGray1;
+  }
+
+  @include desktop {
+    width: 190px;
   }
 }
 
@@ -169,6 +187,10 @@
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 0;
+  }
+
+  @include desktop {
+    width: 126px;
   }
 }
 

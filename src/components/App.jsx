@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
+import useMediaQuery from 'common/hooks/mediaRulesHook';
 
 const AuthPage = lazy(() =>
   import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */)
@@ -25,6 +26,8 @@ const MobilePage = lazy(() =>
 );
 
 function App() {
+  const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
+
   return (
     <>
       <Suspense fallback={null}>
@@ -34,7 +37,9 @@ function App() {
             <Route path="expenses" element={<ExpensesPage />} />
             <Route path="incomes" element={<IncomesPage />} />
             <Route path="report" element={<ReportPage />} />
-            <Route path="mobile" element={<MobilePage />} />
+            {!mobileMediaQuery && (
+              <Route path="mobile" element={<MobilePage />} />
+            )}
           </Route>
         </Routes>
       </Suspense>

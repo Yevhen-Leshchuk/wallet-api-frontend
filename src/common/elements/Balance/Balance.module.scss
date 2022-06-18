@@ -9,6 +9,10 @@
 
     margin-bottom: 0;
   }
+
+  @include desktop() {
+    margin-right: 205px;
+  }
 }
 
 .balanceTitle {
