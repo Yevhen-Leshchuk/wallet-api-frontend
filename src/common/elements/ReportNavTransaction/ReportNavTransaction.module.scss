@@ -1,0 +1,33 @@
+@import 'styles/shared.scss';
+
+.reportNavTransactionBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 135px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.reportNavTransactionLink {
+  width: 8px;
+  height: 15px;
+}
+
+.reportNavIcon {
+  width: 8px;
+  height: 15px;
+}
+
+.reportNavTransactionTitle {
+  @include fontProperty(
+    $weight: 700,
+    $color: $black,
+    $height: 1.14,
+    $letter-spacing: 0.02em,
+    $transform: uppercase
+  );
+}

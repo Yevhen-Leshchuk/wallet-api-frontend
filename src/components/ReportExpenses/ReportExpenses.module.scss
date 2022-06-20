@@ -1,0 +1,91 @@
+@import 'styles/shared.scss';
+
+.reportExpensesBox {
+  margin-bottom: 35px;
+}
+
+.reportExpensesList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.reportExpensesItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 94px;
+  height: 140px;
+  margin-bottom: 20px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $lightGray8;
+}
+
+.reportExpensesItem:nth-child(3n + 3) {
+  padding-right: 0;
+}
+
+.reportExpensesItem:nth-last-child(-n + 2) {
+  margin-bottom: 0;
+}
+
+.reportExpensesItem:nth-last-child(2) {
+  width: 141px;
+  margin-left: auto;
+  padding-right: 0;
+}
+
+.reportExpensesItem:last-child {
+  width: 141px;
+  margin-right: auto;
+  padding-right: 0;
+}
+
+.reportExpensesCount {
+  margin-bottom: 15px;
+  @include fontProperty($transform: uppercase);
+}
+
+.reportExpensesIconBox {
+  position: relative;
+
+  width: 59px;
+  height: 46px;
+  background-color: $lightGray1;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  transition: background-color 0.25s $cubicBezier;
+}
+
+.reportExpensesIconBox:hover,
+.reportExpensesIconBox:focus {
+  background-color: #ffdac0;
+  transition: background-color 0.25s $cubicBezier;
+}
+
+.reportExpensesIcon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  width: 58px;
+  height: 58px;
+  transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 10;
+
+  transition: fill 0.25s $cubicBezier;
+}
+
+.reportExpensesIconBox:hover svg,
+.reportExpensesIconBox:focus svg {
+  fill: $orange;
+
+  transition: fill 0.25s $cubicBezier;
+}
+
+.reportExpensesTitle {
+  @include fontProperty($transform: uppercase, $letter-spacing: 0.02em);
+}

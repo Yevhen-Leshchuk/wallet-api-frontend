@@ -1,0 +1,49 @@
+@import 'styles/shared.scss';
+
+.currentPeriodBox {
+  width: 135px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.currentPeriodTitle {
+  margin-bottom: 5px;
+
+  @include fontProperty();
+}
+
+.dateBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 135px;
+}
+
+.dateBtn {
+  width: 8px;
+  height: 15px;
+
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dateIcon {
+  width: 8px;
+  height: 15px;
+}
+
+.dateText {
+  margin-left: 15px;
+  margin-right: 15px;
+
+  @include fontProperty(
+    $weight: 700,
+    $color: $black,
+    $height: 1.14,
+    $letter-spacing: 0.02em,
+    $transform: uppercase
+  );
+}

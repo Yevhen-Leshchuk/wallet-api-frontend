@@ -1,0 +1,49 @@
+@import 'styles/shared.scss';
+
+.budgetBox {
+  display: flex;
+  justify-content: center;
+
+  width: 282px;
+  height: 85px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  padding: 7px 14px;
+
+  background-color: $white;
+  border-radius: 22px 22px 22px 22px;
+  box-shadow: $shadowAuthBox;
+}
+
+.budgetList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.budgetListItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 120px;
+  height: 70px;
+}
+
+.budgetListItem:first-child {
+  border-right: 1px solid $lightGray8;
+}
+
+.budgetListItemText {
+  margin-bottom: 5px;
+  @include fontProperty($weight: 700, $height: 1.14);
+}
+
+.budgetListItemExp {
+  @include fontProperty($color: $red2, $weight: 700, $height: 1.14);
+}
+
+.budgetListItemInc {
+  @include fontProperty($color: $green, $weight: 700, $height: 1.14);
+}

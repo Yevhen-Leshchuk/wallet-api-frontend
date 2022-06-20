@@ -1,1 +1,16 @@
 @import 'styles/shared.scss';
+
+.reportPageBox {
+  display: block;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 19px 50px 19px;
+
+  min-height: calc(100vh - 60px);
+  @include mobile() {
+    background: url(../../images/img/auth-page/auth_page-bg-mobile.png);
+    background-repeat: no-repeat;
+    background-position: 0px -56px;
+  }
+}
