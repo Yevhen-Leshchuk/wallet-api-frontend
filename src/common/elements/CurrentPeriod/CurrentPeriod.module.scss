@@ -6,6 +6,12 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+
+  @include tablet() {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
 }
 
 .currentPeriodTitle {

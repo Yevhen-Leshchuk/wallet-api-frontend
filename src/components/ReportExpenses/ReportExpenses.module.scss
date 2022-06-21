@@ -1,13 +1,38 @@
 @import 'styles/shared.scss';
 
-.reportExpensesBox {
+.reportExpensesContainer {
   margin-bottom: 35px;
+
+  @include tablet {
+    order: 5;
+    width: 670px;
+    margin-bottom: 30px;
+    padding: 20px 30px 30px 30px;
+    background-color: $white;
+    border-radius: 30px;
+    box-shadow: $shadowProductFormBox;
+  }
+
+  @include desktop {
+    width: 100%;
+    padding: 20px 223px 30px 223px;
+  }
+}
+
+.reportExpensesBox {
+  display: flex;
+  align-items: center;
 }
 
 .reportExpensesList {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  margin-right: -20px;
+
+  @include tablet {
+    justify-content: center;
+  }
 }
 
 .reportExpensesItem {
@@ -21,10 +46,27 @@
   padding-right: 15px;
   padding-bottom: 20px;
   border-bottom: 1px solid $lightGray8;
+
+  @include tablet {
+    flex-basis: calc(17% - 20px);
+
+    height: 113px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    border-bottom: none;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
 }
 
 .reportExpensesItem:nth-child(3n + 3) {
   padding-right: 0;
+}
+
+.reportExpensesItem:nth-child(6) {
+  @include tablet {
+    margin-right: 0;
+  }
 }
 
 .reportExpensesItem:nth-last-child(-n + 2) {
@@ -35,12 +77,27 @@
   width: 141px;
   margin-left: auto;
   padding-right: 0;
+
+  @include tablet {
+    width: 94px;
+    margin-left: 0;
+  }
+}
+
+.reportExpensesItem:nth-child(n + 7) {
+  margin-bottom: 0;
 }
 
 .reportExpensesItem:last-child {
   width: 141px;
   margin-right: auto;
   padding-right: 0;
+
+  @include tablet {
+    width: 94px;
+
+    margin-right: 0;
+  }
 }
 
 .reportExpensesCount {

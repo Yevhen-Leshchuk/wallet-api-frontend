@@ -1,9 +1,9 @@
 import sprite from '../../../images/svg/sprite.svg';
 import s from './CurrentPeriod.module.scss';
 
-const CurrentPeriod = () => {
+const CurrentPeriod = ({ style }) => {
   return (
-    <div className={s.currentPeriodBox}>
+    <div className={s.currentPeriodBox} style={style}>
       <h2 className={s.currentPeriodTitle}>Текущий период :</h2>
       <div className={s.dateBox}>
         <button type="button" className={s.dateBtn} onClick={() => null}>

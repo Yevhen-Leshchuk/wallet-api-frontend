@@ -7,7 +7,10 @@
   margin-bottom: 15px;
 
   @include tablet() {
-    display: none;
+    width: 175px;
+
+    margin-left: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -17,9 +20,28 @@
 
   width: 24px;
   height: 24px;
+
+  @include tablet() {
+    width: 175px;
+  }
 }
 
 .goBackLinkIcon {
   width: 18px;
   height: 12px;
+
+  @include tablet() {
+    margin-right: 15px;
+  }
+}
+
+.goBackText {
+  @include fontProperty();
+  transition: color 0.25s $cubicBezier;
+}
+
+.goBackText:hover,
+.goBackText:focus {
+  color: $orange;
+  transition: color 0.25s $cubicBezier;
 }

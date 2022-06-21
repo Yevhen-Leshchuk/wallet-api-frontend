@@ -15,6 +15,13 @@
   }
 }
 
+.balanceForm {
+  @include desktop() {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .balanceTitle {
   margin-bottom: 6px;
 

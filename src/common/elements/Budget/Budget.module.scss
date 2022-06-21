@@ -14,6 +14,18 @@
   background-color: $white;
   border-radius: 22px 22px 22px 22px;
   box-shadow: $shadowAuthBox;
+
+  @include tablet {
+    order: 4;
+    width: 668px;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  @include desktop {
+    width: 100%;
+  }
 }
 
 .budgetList {
@@ -29,15 +41,37 @@
 
   width: 120px;
   height: 70px;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+    width: 175px;
+    height: 36px;
+  }
 }
 
 .budgetListItem:first-child {
   border-right: 1px solid $lightGray8;
+
+  @include tablet {
+    padding-right: 20px;
+  }
+}
+
+.budgetListItem:last-child {
+  @include tablet {
+    padding-left: 20px;
+  }
 }
 
 .budgetListItemText {
   margin-bottom: 5px;
   @include fontProperty($weight: 700, $height: 1.14);
+
+  @include tablet {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
 }
 
 .budgetListItemExp {
