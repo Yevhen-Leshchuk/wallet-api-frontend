@@ -85,7 +85,9 @@
 }
 
 .reportExpensesItem:nth-child(n + 7) {
-  margin-bottom: 0;
+  @include tablet {
+    margin-bottom: 0;
+  }
 }
 
 .reportExpensesItem:last-child {

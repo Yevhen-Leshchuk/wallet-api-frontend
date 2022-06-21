@@ -17,7 +17,8 @@ const ProductForm = () => {
   };
   return (
     <>
-      <GoBackLink redirectTo="/mobile" />
+      {mobileMediaQuery && <GoBackLink redirectTo="/mobile" />}
+
       <div className={s.productFormBox}>
         {tabletMediaQuery && <Calendar />}
         <form className={s.productForm} onSubmit={null}>

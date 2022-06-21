@@ -21,6 +21,12 @@ const ReportPage = lazy(() =>
   import('pages/ReportPage/ReportPage' /* webpackChunkName: "ReportPage" */)
 );
 
+// const ReportIncomesPage = lazy(() =>
+//   import(
+//     'pages/ReportIncomesPage/ReportIncomesPage' /* webpackChunkName: "ReportIncomesPage" */
+//   )
+// );
+
 const MobilePage = lazy(() =>
   import('pages/MobilePage/MobilePage' /* webpackChunkName: "MobilePage" */)
 );
@@ -33,10 +39,11 @@ function App() {
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<AuthPage />} />
+            <Route index path="/" element={<AuthPage />} />
             <Route path="expenses" element={<ExpensesPage />} />
             <Route path="incomes" element={<IncomesPage />} />
-            <Route path="report" element={<ReportPage />} />
+            <Route path="report/*" element={<ReportPage />} />
+            {/* <Route path="report-incomes" element={<ReportIncomesPage />} /> */}
             {!mobileMediaQuery && (
               <Route path="mobile" element={<MobilePage />} />
             )}
