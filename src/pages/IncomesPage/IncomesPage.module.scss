@@ -1,1 +1,71 @@
 @import 'styles/shared.scss';
+
+.incomesBox {
+  display: block;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
+
+  min-height: calc(100vh - 60px);
+  @include mobile() {
+    background: url(../../images/img/auth-page/auth_page-bg-mobile.png);
+    background-repeat: no-repeat;
+    background-position: 0px -56px;
+  }
+
+  @include tablet() {
+    padding: 40px 50px;
+
+    background: url(../../images/img/auth-page/auth_page-bg-tablet.png),
+      url(../../images/img/auth-page/auth_page-small_cabbage-desktop.png);
+    background-position: 0px -56px, 500px 1000px;
+    background-repeat: no-repeat;
+  }
+
+  @include desktop {
+    background: url(../../images/img/auth-page/auth_page-bg-desktop.png),
+      url(../../images/img/auth-page/auth_page-cabbage-desktop.png);
+    background-position: 0px -56px, 0 660px;
+    background-repeat: no-repeat;
+  }
+}
+
+.productFormBox {
+  @include tablet {
+    width: 665px;
+    height: 626px;
+    padding: 30px;
+
+    background-color: $white;
+    box-shadow: $shadowProductFormBox;
+    border-radius: 0px 30px 30px 30px;
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 1180px;
+    height: 580px;
+    margin-bottom: 0;
+    padding: 30px 20px 60px 20px;
+  }
+}
+
+.balanceBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 665px;
+  margin-bottom: 60px;
+
+  @include desktop() {
+    width: auto;
+
+    margin-left: 460px;
+    margin-bottom: 20px;
+  }
+}

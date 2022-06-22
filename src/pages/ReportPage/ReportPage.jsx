@@ -32,7 +32,7 @@ const ReportPage = () => {
   const desktopMediaQuery = useMediaQuery('(min-width: 1280px)');
 
   return (
-    <div className={s.reportExpensesPageBox}>
+    <div className={s.reportPageBox}>
       <div className={s.goBackBox}>
         {activeLocation === '/report/expenses' ? (
           <GoBackLink redirectTo="/expenses" />

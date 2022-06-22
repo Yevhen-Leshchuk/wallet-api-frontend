@@ -1,6 +1,7 @@
 @import 'styles/shared.scss';
 
-.expListBox {
+.expListBox,
+.incListBox {
   width: 607px;
   height: 346px;
   border: 2px solid $lightGray1;
@@ -13,7 +14,8 @@
   }
 }
 
-.expListHeader {
+.expListHeader,
+.incListHeader {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -30,7 +32,8 @@
   }
 }
 
-.expListHeaderItem {
+.expListHeaderItem,
+.incListHeaderItem {
   @include fontProperty(
     $weight: 700,
     $transform: uppercase,
@@ -39,7 +42,8 @@
   );
 }
 
-.expListItemBox {
+.expListItemBox,
+.incListItemBox {
   height: 300px;
   overflow-y: scroll;
 
@@ -53,14 +57,16 @@
   }
 }
 
-.expListItemBox::-webkit-scrollbar {
+.expListItemBox::-webkit-scrollbar,
+.incListItemBox::-webkit-scrollbar {
   width: 6px;
 
   border-radius: 2px;
   background: transparent;
 }
 
-.expListItemBox::-webkit-scrollbar-thumb {
+.expListItemBox::-webkit-scrollbar-thumb,
+.incListItemBox::-webkit-scrollbar-thumb {
   background-color: $orange;
   border-radius: 2px;
   height: 130px;

@@ -4,7 +4,10 @@ import Tooltip from 'common/elements/Tooltip';
 import Calendar from 'common/elements/Calendar';
 import { ExpensesList } from 'components/TransactionList';
 import NavTransaction from 'common/elements/NavTransaction';
-import { ExpensesListItem } from 'components/TransactionListItem';
+import {
+  ExpensesListItem,
+  IncomesListItem,
+} from 'components/TransactionListItem';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import s from './MobilePage.module.scss';
 
@@ -23,6 +26,7 @@ const MobilePage = () => {
       {mobileMediaQuery && (
         <ul className={s.expListItemBox}>
           <ExpensesListItem />
+          <IncomesListItem />
         </ul>
       )}
       <NavTransaction />

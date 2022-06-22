@@ -1,6 +1,7 @@
 @import 'styles/shared.scss';
 
-.expListItem {
+.expListItem,
+.incListItem {
   position: relative;
   width: 282px;
   margin-left: auto;
@@ -21,7 +22,8 @@
   }
 }
 
-.expListItemBox {
+.expListItemBox,
+.incListItemBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,9 +32,14 @@
     justify-content: normal;
     padding: 13px 20px 13px 30px;
   }
+
+  @include desktop {
+    padding: 3px 30px 13px 40px;
+  }
 }
 
-.expListItemDesc {
+.expListItemDesc,
+.incListItemDesc {
   position: absolute;
   top: 3px;
   left: 0;
@@ -48,29 +55,44 @@
     order: 2;
     width: 132px;
     height: 14px;
-    margin-right: 40px;
+    margin-right: 60px;
     overflow: hidden;
 
     @include fontProperty($size: 12px, $height: 1.17, $text-align: left);
   }
+
+  @include desktop {
+    margin-right: 115px;
+  }
 }
 
-.expListItemDate {
+.expListItemDate,
+.incListItemDate {
   margin-top: 32px;
   margin-right: 20px;
 
-  @include fontProperty($size: 8px, $height: 1.125, $transform: uppercase);
+  @include fontProperty(
+    $size: 8px,
+    $height: 1.125,
+    $transform: uppercase,
+    $text-align: left
+  );
 
   @include tablet {
     order: 1;
     margin-top: 0;
     margin-right: 83px;
 
-    @include fontProperty($size: 12px, $height: 1.17);
+    @include fontProperty($size: 12px, $height: 1.17, $text-align: left);
+  }
+
+  @include desktop {
+    width: 130px;
   }
 }
 
-.expListItemCategory {
+.expListItemCategory,
+.incListItemCategory {
   margin-top: 32px;
   margin-right: 75px;
 
@@ -78,10 +100,15 @@
 
   @include tablet {
     order: 3;
+    width: 100px;
     margin-top: 0;
     margin-right: 60px;
 
-    @include fontProperty($size: 12px, $height: 1.17);
+    @include fontProperty($size: 12px, $height: 1.17, $text-align: left);
+  }
+
+  @include desktop {
+    margin-right: 75px;
   }
 }
 
@@ -101,9 +128,19 @@
     margin-right: 20px;
     margin-bottom: 0;
   }
+
+  @include desktop {
+    margin-right: 50px;
+  }
 }
 
-.expListItemBtnBox {
+.incListItemPrice {
+  composes: expListItemPrice;
+  @include fontProperty($weight: 700, $color: $green);
+}
+
+.expListItemBtnBox,
+.incListItemBtnBox {
   width: 18px;
   height: 18px;
   margin-top: auto;
@@ -113,9 +150,33 @@
     order: 5;
     margin: 0;
   }
+
+  @include desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: $lightGray1;
+    transition: background-color 0.25s $cubicBezier;
+    cursor: pointer;
+  }
 }
 
-.expListItemBtn {
+.expListItemBtnBox:hover,
+.incListItemBtnBox:hover,
+.expListItemBtnBox:focus,
+.incListItemBtnBox:focus {
+  @include desktop {
+    background-color: $orangeLight;
+    transition: background-color 0.25s $cubicBezier;
+  }
+}
+
+.expListItemBtn,
+.incListItemBtn {
   width: 18px;
   height: 18px;
 
@@ -124,7 +185,8 @@
   cursor: pointer;
 }
 
-.expListItemIcon {
+.expListItemIcon,
+.incListItemIcon {
   width: 18px;
   height: 18px;
 
@@ -133,7 +195,9 @@
 }
 
 .expListItemBtn:hover svg,
-.expListItemBtn:focus svg {
+.expListItemBtn:focus svg,
+.incListItemBtn:hover svg,
+.incListItemBtn:focus svg {
   fill: $orange;
 
   transition: fill 0.25s $cubicBezier;
