@@ -79,4 +79,6 @@
   width: 40px;
   @include fontProperty();
   border-bottom: 1px solid $darkGray;
+
+  transition: border-color 0.25s, color 0.25s $cubicBezier;
 }

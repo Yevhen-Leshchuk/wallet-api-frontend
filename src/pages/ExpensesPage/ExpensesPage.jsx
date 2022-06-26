@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { authSelectors } from 'redux/auth';
 import ProductForm from 'components/ProductForm';
 import Balance from 'common/elements/Balance';
 import LinkToReport from 'common/elements/LinkToReport';
@@ -10,6 +14,17 @@ import s from './ExpensesPage.module.scss';
 const ExpensesPage = () => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
+
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      return;
+    }
+
+    navigate('/');
+  }, [isLoggedIn, navigate]);
 
   return (
     <div className={s.expensesBox}>

@@ -24,6 +24,12 @@ const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
     },
+    [authOperations.logOut.fulfilled](state) {
+      state.email = null;
+      state.id = null;
+      state.accessToken = null;
+      state.isLoggedIn = false;
+    },
   },
 });
 

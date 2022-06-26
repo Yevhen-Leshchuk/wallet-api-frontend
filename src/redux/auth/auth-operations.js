@@ -3,9 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+const accessToken = {
+  set(accessToken) {
+    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
@@ -20,7 +20,7 @@ const token = {
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/auth/register', credentials);
-    token.set(data.token);
+    accessToken.set(data.accessToken);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -35,9 +35,23 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
-    token.set(data.token);
+    accessToken.set(data.accessToken);
     console.log(data);
     return data;
+  } catch (error) {
+    // TODO: Добавить обработку ошибки error.message
+  }
+});
+
+/*
+ * POST @ /users/logout
+ * headers: Authorization: Bearer token
+ * После успешного логаута, удаляем токен из HTTP-заголовка
+ */
+const logOut = createAsyncThunk('auth/logout', async () => {
+  try {
+    await axios.post('/auth/logout');
+    accessToken.unset();
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
   }
@@ -46,5 +60,6 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 const operations = {
   register,
   logIn,
+  logOut,
 };
 export default operations;
