@@ -5,7 +5,6 @@ import CurrentPeriod from 'common/elements/CurrentPeriod';
 import Balance from 'common/elements/Balance';
 import Budget from 'common/elements/Budget';
 import ReportNavTransaction from 'common/elements/ReportNavTransaction';
-// import ReportExpenses from 'components/ReportExpenses';
 import Chart from 'common/elements/Chart';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import s from './ReportPage.module.scss';
@@ -25,7 +24,6 @@ const ReportIncomes = lazy(() =>
 const ReportPage = () => {
   const location = useLocation();
   const activeLocation = location.pathname;
-  console.log(activeLocation);
 
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');

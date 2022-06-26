@@ -1,13 +1,14 @@
 import s from './Button.module.scss';
 
-const Button = ({ text, style, btnAction }) => {
-  // const onClickAction = e => {
-  //   e.preventDefault();
-  //   btnAction();
-  // };
+const Button = ({ text, style, onClick }) => {
   return (
     <>
-      <button type="button" className={s.button} style={style} onClick={null}>
+      <button
+        type="submit"
+        className={s.button}
+        style={style}
+        onClick={onClick}
+      >
         {text}
       </button>
     </>

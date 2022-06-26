@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Layout from './Layout';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 
@@ -26,7 +27,17 @@ const MobilePage = lazy(() =>
 );
 
 function App() {
+  let navigate = useNavigate();
+  const location = useLocation();
+  const activeLocation = location.pathname;
+
   const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
+
+  useEffect(() => {
+    if (mobileMediaQuery && activeLocation === '/mobile') {
+      navigate('/expenses');
+    }
+  }, [navigate, activeLocation, mobileMediaQuery]);
 
   return (
     <>

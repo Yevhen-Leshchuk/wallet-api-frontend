@@ -156,6 +156,10 @@
     width: 171px;
     top: 44px;
   }
+
+  @include tablet {
+    width: 190px;
+  }
 }
 
 .productFormListItem {

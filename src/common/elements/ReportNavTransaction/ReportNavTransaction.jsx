@@ -5,7 +5,6 @@ import s from './ReportNavTransaction.module.scss';
 const ReportNavTransaction = () => {
   const location = useLocation();
   const activeLocation = location.pathname;
-  console.log(activeLocation);
 
   return (
     <div className={s.reportNavTransactionBox}>

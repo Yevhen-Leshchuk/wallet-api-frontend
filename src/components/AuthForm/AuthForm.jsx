@@ -1,14 +1,16 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
-import Button from 'common/elements/Button';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { authOperations, authSelectors } from 'redux/auth';
 import s from './AuthForm.module.scss';
 
 const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
   password: Yup.string()
-    .min(3, 'must be at least 3 characters long')
-    .max(10, 'must  be no more than 10 characters long')
+    .min(8, 'password" length must be at least 8 characters long')
     .required('Required'),
 });
 
@@ -18,12 +20,31 @@ const initialValues = {
 };
 
 const AuthForm = () => {
-  const btnEnter = nanoid();
-  const btnAuth = nanoid();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const [action, setAction] = useState('');
 
-  // const onSubmit = (values, { resetForm }) => {
-  //   resetForm();
-  // };
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const emailInputId = nanoid();
+  const passwordInputId = nanoid();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
+
+    navigate('/expenses');
+  }, [isLoggedIn, navigate]);
+
+  const onSubmit = (values, { resetForm }) => {
+    if (action === 'register') {
+      dispatch(authOperations.register(values));
+    } else if (action === 'login') {
+      dispatch(authOperations.logIn(values));
+    }
+    resetForm();
+  };
 
   return (
     <div className={s.formBox}>
@@ -39,10 +60,10 @@ const AuthForm = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        // onSubmit={onSubmit}
+        onSubmit={onSubmit}
       >
         <Form className={s.form} noValidate>
-          <label className={s.label} htmlFor={null}>
+          <label className={s.label} htmlFor={emailInputId}>
             Электронная почта:
           </label>
           <Field
@@ -50,13 +71,13 @@ const AuthForm = () => {
             type="email"
             name="email"
             placeholder="your@email.com"
-            id={null}
+            id={emailInputId}
           />
           <p className={s.error}>
             <ErrorMessage name="email" />
           </p>
 
-          <label className={s.label} htmlFor={null}>
+          <label className={s.label} htmlFor={passwordInputId}>
             Пароль
           </label>
           <Field
@@ -64,17 +85,30 @@ const AuthForm = () => {
             type="password"
             name="password"
             placeholder="Пароль"
-            id={null}
+            id={passwordInputId}
           />
           <p className={s.errorPassword}>
             <ErrorMessage name="password" />
           </p>
+          <div>
+            <button
+              type="submit"
+              className={s.buttonEnter}
+              onClick={() => setAction('login')}
+            >
+              Войти
+            </button>
+
+            <button
+              type="submit"
+              className={s.buttonAuth}
+              onClick={() => setAction('register')}
+            >
+              Регистрация
+            </button>
+          </div>
         </Form>
       </Formik>
-      <div>
-        <Button text="войти" key={btnEnter} style={{ marginRight: '15px' }} />
-        <Button text="регистрация" key={btnAuth} />
-      </div>
     </div>
   );
 };
