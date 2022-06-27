@@ -1,7 +1,67 @@
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/auth';
+import { createPortal } from 'react-dom';
+import Button from '../Button';
+import sprite from '../../../images/svg/sprite.svg';
 import s from './Modal.module.scss';
 
-const Module = () => {
-  return;
-};
+const modalRoot = document.querySelector('#modal-root');
 
-export default Module;
+function Modal({ onClose }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.document.body.style.overflowY = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.document.body.style.overflowY = 'visible';
+    };
+  });
+
+  const handleKeyDown = event => {
+    if (event.code === 'Escape') {
+      onClose();
+    }
+  };
+
+  const handleBackdropClick = event => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    }
+  };
+
+  return createPortal(
+    <div className={s.overlay} onClick={handleBackdropClick}>
+      <div className={s.modal}>
+        <button type="button" className={s.closeBtn} onClick={onClose}>
+          <svg className={s.closeImg}>
+            <use xlinkHref={`${sprite}#close`} />
+          </svg>
+        </button>
+        <h2 className={s.title}>Вы действительно хотите выйти?</h2>
+        <Button
+          text="да"
+          onClick={() => dispatch(authOperations.logOut())}
+          style={{
+            marginRight: '15px',
+            border: '2px solid #F6F7FC',
+            boxShadow: 'none',
+          }}
+        />
+        <Button
+          text="нет"
+          onClick={() => onClose()}
+          style={{
+            border: '2px solid #F6F7FC',
+            boxShadow: 'none',
+          }}
+        />
+      </div>
+    </div>,
+    modalRoot
+  );
+}
+
+export default Modal;

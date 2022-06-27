@@ -1,1 +1,69 @@
 @import 'styles/shared.scss';
+
+.overlay {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  position: relative;
+  width: 300px;
+  height: 194px;
+  padding: 50px 15px;
+
+  background-color: $white;
+  box-shadow: $shadowModal;
+  border-radius: 30px;
+
+  @include tablet {
+    width: 380px;
+    padding: 50px 50px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 12px;
+  height: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.closeImg {
+  width: 12px;
+  height: 12px;
+  stroke: $darkGray;
+
+  transition: fill 0.25s $cubicBezier;
+}
+
+.closeBtn:hover svg,
+.closeBtn:focus svg {
+  stroke: $orange;
+
+  transition: fill 0.25s $cubicBezier;
+}
+
+.title {
+  margin-bottom: 20px;
+
+  @include fontProperty(
+    $weight: 500,
+    $size: 14px,
+    $height: 1.14,
+    $letter-spacing: 0.02em
+  );
+}

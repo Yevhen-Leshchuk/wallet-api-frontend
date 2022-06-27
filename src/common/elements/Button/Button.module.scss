@@ -11,7 +11,7 @@
   );
 
   color: $darkGray;
-  background-color: $lightGray1;
+  background-color: transparent;
 
   border: 2px solid $lightGray5;
   border-radius: 16px;
@@ -19,7 +19,8 @@
   outline: none;
   cursor: pointer;
 
-  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+  transition: border-color 0.25s $cubicBezier, color 0.25s $cubicBezier,
+    background-color 0.25s $cubicBezier;
 
   @include tablet {
     background-color: transparent;
@@ -32,5 +33,6 @@
   color: $white;
   border: $orange;
 
-  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+  transition: border-color 0.25s $cubicBezier, color 0.25s $cubicBezier,
+    background-color 0.25s $cubicBezier;
 }

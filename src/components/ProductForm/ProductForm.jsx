@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import GoBackLink from 'common/elements/GoBackLink';
-import Button from 'common/elements/Button';
 import Calendar from 'common/elements/Calendar';
 import sprite from '../../images/svg/sprite.svg';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
@@ -95,21 +94,14 @@ const ProductForm = () => {
           </div>
         </form>
       </div>
-      <Button
-        text="Ввод"
-        style={{
-          marginRight: '15px',
-          border: '2px solid #F6F7FC',
-          boxShadow: 'none',
-        }}
-      />
-      <Button
-        text="Очистить"
-        style={{
-          border: '2px solid #F6F7FC',
-          boxShadow: 'none',
-        }}
-      />
+
+      <button type="submit" className={s.buttonInput} onClick={() => null}>
+        Ввод
+      </button>
+
+      <button type="submit" className={s.buttonClear} onClick={() => null}>
+        Очистить
+      </button>
     </>
   );
 };

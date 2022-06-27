@@ -128,5 +128,9 @@
 <path d="M19.733 17.6h1.067v1.067h-1.067v-1.067z"></path>
 <path d="M21.867 17.6h1.067v1.067h-1.067v-1.067z"></path>
 </symbol>
+<symbol id="close" viewBox="0 0 32 32">
+<path fill="none"  stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 2.286l27.429 27.429"></path>
+<path fill="none"  stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 29.714l27.429-27.429"></path>
+</symbol>
 </defs>
 </svg>
