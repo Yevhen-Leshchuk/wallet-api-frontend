@@ -3,9 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
-const accessToken = {
-  set(accessToken) {
-    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+const refreshToken = {
+  set(refreshToken) {
+    axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
@@ -20,7 +20,7 @@ const accessToken = {
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/auth/register', credentials);
-    accessToken.set(data.accessToken);
+    // accessToken.set(data.accessToken);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -35,8 +35,8 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
-    accessToken.set(data.accessToken);
-    console.log(data);
+    refreshToken.set(data.accessToken);
+    // console.log(data);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -51,15 +51,48 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/auth/logout');
-    accessToken.unset();
+    refreshToken.unset();
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
   }
 });
 
+/*
+ * POST @ /users/current
+ * headers:
+ *    Authorization: Bearer token
+ *
+ * 1. Забираем токен из стейта через getState()
+ * 2. Если токена нет, выходим не выполняя никаких операций
+ * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
+ */
+const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.refreshToken;
+    const userSid = state.auth.sid;
+
+    if (persistedToken === null) {
+      console.log('Токена нет, уходим из fetchCurrentUser');
+      return thunkAPI.rejectWithValue();
+    }
+
+    refreshToken.set(persistedToken);
+    try {
+      const { data } = await axios.post('/auth/refresh', { sid: userSid });
+      console.log(data);
+      return data;
+    } catch (error) {
+      // TODO: Добавить обработку ошибки error.message
+    }
+  }
+);
+
 const operations = {
   register,
   logIn,
   logOut,
+  fetchCurrentUser,
 };
 export default operations;

@@ -1,6 +1,7 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { authOperations } from 'redux/auth';
 import Layout from './Layout';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 
@@ -28,10 +29,15 @@ const MobilePage = lazy(() =>
 
 function App() {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
   const location = useLocation();
   const activeLocation = location.pathname;
 
   const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   useEffect(() => {
     if (mobileMediaQuery && activeLocation === '/mobile') {
