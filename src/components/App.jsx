@@ -36,7 +36,7 @@ function App() {
   const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
 
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
+    dispatch(authOperations.getUser());
   }, [dispatch]);
 
   useEffect(() => {
