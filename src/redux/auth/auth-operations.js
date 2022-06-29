@@ -33,7 +33,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
-    refreshToken.set(data.accessToken);
+    refreshToken.set(data.refreshToken);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -44,6 +44,22 @@ const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/auth/logout');
     refreshToken.unset();
+  } catch (error) {
+    // TODO: Добавить обработку ошибки error.message
+  }
+});
+
+const updateUserBalance = createAsyncThunk('auth/balance', async newBalance => {
+  try {
+    const { data } = await axios.patch('/user/balance', {
+      newBalance: newBalance,
+    });
+
+    // refreshToken.set(data.refreshToken);
+    accessToken.set(data.accessToken);
+    console.log(data);
+
+    return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
   }
@@ -72,7 +88,6 @@ const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
 const getUser = createAsyncThunk('auth/user', async (_, thunkAPI) => {
   const state = thunkAPI.getState();
   const persistedToken = state.auth.accessToken;
-  console.log(persistedToken);
 
   if (persistedToken === null) {
     console.log('Токена нет, уходим из fetchCurrentUser');
@@ -82,7 +97,6 @@ const getUser = createAsyncThunk('auth/user', async (_, thunkAPI) => {
   accessToken.set(persistedToken);
   try {
     const { data } = await axios.get('/user');
-    console.log(data);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -95,5 +109,6 @@ const operations = {
   logOut,
   refresh,
   getUser,
+  updateUserBalance,
 };
 export default operations;

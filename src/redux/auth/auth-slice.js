@@ -1,13 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
 
-// "userData": {
-//     "email": "max5@gmail.com",
-//     "balance": 0,
-//     "id": "62b62a57db7a81081402ae7b",
-//     "transactions": []
-//   }
-
 const initialState = {
   userData: {
     email: null,
@@ -30,7 +23,6 @@ const authSlice = createSlice({
     [authOperations.register.fulfilled](state, action) {
       state.userData.email = action.payload.email;
       state.userData.id = action.payload.id;
-      state.isLoggedIn = true;
     },
     [authOperations.logIn.fulfilled](state, action) {
       state.userData = action.payload.userData;
@@ -61,6 +53,9 @@ const authSlice = createSlice({
       state.userData.balance = action.payload.balance;
       state.userData.transactions = action.payload.transactions;
       state.isLoggedIn = true;
+    },
+    [authOperations.updateUserBalance.fulfilled](state, action) {
+      state.userData.balance = action.payload.newBalance;
     },
   },
 });
