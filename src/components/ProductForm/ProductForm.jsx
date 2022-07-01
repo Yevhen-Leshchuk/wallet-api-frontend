@@ -5,7 +5,7 @@ import sprite from '../../images/svg/sprite.svg';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import s from './ProductForm.module.scss';
 
-const ProductForm = () => {
+const ProductForm = ({ incomesCategories, expenseCategories }) => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
 
@@ -67,9 +67,18 @@ const ProductForm = () => {
                   </svg>
                 </button>
                 <ul className={s.productFormListBox} id="categories">
-                  <li className={s.productFormListItem}>Транспорт</li>
-                  <li className={s.productFormListItem}>Одежда</li>
-                  <li className={s.productFormListItem}>Продукты</li>
+                  {incomesCategories &&
+                    incomesCategories.map(categorie => (
+                      <li key={categorie} className={s.productFormListItem}>
+                        {categorie}
+                      </li>
+                    ))}
+                  {expenseCategories &&
+                    expenseCategories.map(categorie => (
+                      <li key={categorie} className={s.productFormListItem}>
+                        {categorie}
+                      </li>
+                    ))}
                 </ul>
               </>
             )}

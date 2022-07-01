@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { authSelectors } from 'redux/auth';
 import ProductForm from 'components/ProductForm';
@@ -9,14 +9,22 @@ import NavTransaction from 'common/elements/NavTransaction';
 import { ExpensesList } from 'components/TransactionList';
 import Brief from 'common/elements/Brief';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
+import { transactionOperations, transactionSelectors } from 'redux/transaction';
 import s from './ExpensesPage.module.scss';
 
 const ExpensesPage = () => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
-
+  const dispatch = useDispatch();
+  const expenseCategories = useSelector(
+    transactionSelectors.getExpensesCategories
+  );
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   let navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(transactionOperations.getExpenseCategories());
+  }, [dispatch]);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -39,7 +47,7 @@ const ExpensesPage = () => {
       )}
 
       <div className={s.productFormBox}>
-        <ProductForm />
+        <ProductForm expenseCategories={expenseCategories} />
         {tabletMediaQuery && <ExpensesList />}
       </div>
       {tabletMediaQuery && <Brief />}

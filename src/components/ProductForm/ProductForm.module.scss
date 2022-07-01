@@ -146,6 +146,7 @@
   left: 0;
 
   background-color: $white;
+  z-index: 999;
 
   overflow-y: scroll;
   border: 2px solid $lightGray1;
@@ -157,7 +158,7 @@
     top: 44px;
   }
 
-  @include tablet {
+  @include desktop {
     width: 190px;
   }
 }

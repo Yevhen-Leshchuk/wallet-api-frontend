@@ -1,22 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { authSelectors, authOperations } from 'redux/auth';
-// import { balanceOperations, balanceSelectors } from 'redux/balance';
 
 import s from './Balance.module.scss';
 
 const Balance = ({ inputStyle, btnStyle, balanceBoxStyle }) => {
   const dispatch = useDispatch();
-  const [value, setfValue] = useState(null);
+  const [value, setValue] = useState(null);
   let balance = useSelector(authSelectors.getBalance);
-  console.log(balance);
 
   const inputValue = useRef();
 
   useEffect(() => {
     dispatch(authOperations.getUser());
 
-    setfValue(
+    setValue(
       (inputValue.current =
         parseFloat(
           balance && typeof balance === 'number' ? balance : 0
