@@ -1,10 +1,9 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { authOperations } from 'redux/auth';
 import Layout from './Layout';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
-import { authSelectors } from 'redux/auth';
 
 const AuthPage = lazy(() =>
   import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */)
@@ -33,16 +32,10 @@ function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const activeLocation = location.pathname;
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  // console.log(isLoggedIn);
 
   const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
 
   useEffect(() => {
-    // if (!isLoggedIn) {
-    //   return;
-    // }
-
     dispatch(authOperations.getUser());
   }, [dispatch]);
 

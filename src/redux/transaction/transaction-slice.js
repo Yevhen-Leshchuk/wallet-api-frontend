@@ -4,6 +4,12 @@ import transactionOperations from './transaction-operations';
 const initialState = {
   incomeCategories: [],
   expenseCategories: [],
+  expenses: {
+    description: '',
+    category: '',
+    amount: '',
+    date: '',
+  },
 };
 
 const transactionSlice = createSlice({
@@ -16,6 +22,10 @@ const transactionSlice = createSlice({
 
     [transactionOperations.getExpenseCategories.fulfilled](state, action) {
       state.expenseCategories = action.payload;
+    },
+
+    [transactionOperations.addExpenses.fulfilled](state, action) {
+      state.expenses = action.payload;
     },
   },
 });

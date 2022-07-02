@@ -3,14 +3,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
-const refreshToken = {
-  set(refreshToken) {
-    axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
+// const refreshToken = {
+//   set(refreshToken) {
+//     axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
+//   },
+//   unset() {
+//     axios.defaults.headers.common.Authorization = '';
+//   },
+// };
 
 const accessToken = {
   set(accessToken) {
@@ -33,7 +33,9 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
-    refreshToken.set(data.refreshToken);
+    accessToken.set(data.accessToken);
+    // refreshToken.set(data.refreshToken);
+
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -43,7 +45,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/auth/logout');
-    refreshToken.unset();
+    // refreshToken.unset();
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
   }
@@ -57,7 +59,6 @@ const updateUserBalance = createAsyncThunk('auth/balance', async newBalance => {
 
     // refreshToken.set(data.refreshToken);
     accessToken.set(data.accessToken);
-    console.log(data);
 
     return data;
   } catch (error) {
@@ -75,7 +76,7 @@ const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue();
   }
 
-  refreshToken.set(persistedToken);
+  // refreshToken.set(persistedToken);
   try {
     const { data } = await axios.post('/auth/refresh', { sid: userSid });
     console.log(data);

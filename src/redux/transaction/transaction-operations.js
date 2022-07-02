@@ -29,8 +29,22 @@ const getExpenseCategories = createAsyncThunk(
   }
 );
 
+const addExpenses = createAsyncThunk(
+  'transaction/expense',
+  async credentials => {
+    try {
+      const { data } = await axios.post('/transaction/expense', credentials);
+      console.log(data);
+      return data;
+    } catch (error) {
+      // TODO: Добавить обработку ошибки error.message
+    }
+  }
+);
+
 const operations = {
   getIncomeCategories,
   getExpenseCategories,
+  addExpenses,
 };
 export default operations;
