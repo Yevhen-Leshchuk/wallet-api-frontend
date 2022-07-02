@@ -13,7 +13,6 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const dispatch = useDispatch();
   const date = useSelector(dateSelectors.getSelectedDate);
-  console.log(date);
 
   const [showCategory, setShowCategory] = useState(false);
   const [categoryItem, setCategoryItem] = useState('');
