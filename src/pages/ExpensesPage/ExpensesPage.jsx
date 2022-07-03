@@ -1,20 +1,22 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { authSelectors } from 'redux/auth';
 import ProductForm from 'components/ProductForm';
 import Balance from 'common/elements/Balance';
 import LinkToReport from 'common/elements/LinkToReport';
 import NavTransaction from 'common/elements/NavTransaction';
 import { ExpensesList } from 'components/TransactionList';
 import Brief from 'common/elements/Brief';
+import Tooltip from 'common/elements/Tooltip';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import { transactionOperations, transactionSelectors } from 'redux/transaction';
+import { authSelectors } from 'redux/auth';
 import s from './ExpensesPage.module.scss';
 
 const ExpensesPage = () => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
+  let balance = useSelector(authSelectors.getBalance);
   const dispatch = useDispatch();
   const expenseCategories = useSelector(
     transactionSelectors.getExpensesCategories
@@ -36,10 +38,15 @@ const ExpensesPage = () => {
 
   return (
     <div className={s.expensesBox}>
+      {!balance && mobileMediaQuery && (
+        <Tooltip style={{ position: 'absolute', top: '245px' }} />
+      )}
+
       {tabletMediaQuery && (
         <>
           <div className={s.balanceBox}>
             <Balance />
+            {!balance && <Tooltip />}
             <LinkToReport />
           </div>
           <NavTransaction />

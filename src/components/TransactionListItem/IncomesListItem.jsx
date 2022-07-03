@@ -1,38 +1,30 @@
 import sprite from '../../images/svg/sprite.svg';
 import s from './TransactionListItem.module.scss';
 
-const IncomesListItem = () => {
+const IncomesListItem = ({ description, category, amount, date, _id }) => {
   return (
     <>
-      <li className={s.incListItem}>
+      <li className={s.incListItem} key={_id}>
         <ul className={s.incListItemBox}>
-          <li className={s.incListItemDesc}>Моя зп</li>
-          <li className={s.incListItemDate}>21.06.2022</li>
-          <li className={s.incListItemCategory}>ЗП</li>
-          <li className={s.incListItemPrice}> 2000.00 €</li>
-          <li className={s.incListItemBtnBox}>
+          <li className={s.incListItemDesc} key={description}>
+            {description}
+          </li>
+          <li className={s.incListItemDate} key={date}>
+            {date}
+          </li>
+          <li className={s.incListItemCategory} key={category}>
+            {category}
+          </li>
+          <li className={s.incListItemPrice} key={amount}>
+            {amount}
+          </li>
+          <div className={s.incListItemBtnBox}>
             <button type="submit" className={s.incListItemBtn}>
               <svg className={s.incListItemIcon}>
                 <use xlinkHref={`${sprite}#delete`} />
               </svg>
             </button>
-          </li>
-        </ul>
-      </li>
-
-      <li className={s.incListItem}>
-        <ul className={s.incListItemBox}>
-          <li className={s.incListItemDesc}>% остаток на карте</li>
-          <li className={s.incListItemDate}>12.06.2022</li>
-          <li className={s.incListItemCategory}>Доп. доход</li>
-          <li className={s.incListItemPrice}>317.29 €</li>
-          <li className={s.incListItemBtnBox}>
-            <button type="submit" className={s.incListItemBtn}>
-              <svg className={s.incListItemIcon}>
-                <use xlinkHref={`${sprite}#delete`} />
-              </svg>
-            </button>
-          </li>
+          </div>
         </ul>
       </li>
     </>

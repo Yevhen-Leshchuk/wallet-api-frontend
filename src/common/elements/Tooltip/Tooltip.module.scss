@@ -10,6 +10,15 @@
   background: $backgroundBalanceBox;
   border-radius: 30px;
   z-index: 2;
+
+  @include tablet {
+    top: 97px;
+    left: 110px;
+  }
+
+  @include desktop {
+    left: 575px;
+  }
 }
 
 .tooltipBox::before {

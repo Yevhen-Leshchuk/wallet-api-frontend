@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { useSelector } from 'react-redux';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import GoBackLink from 'common/elements/GoBackLink';
 import CurrentPeriod from 'common/elements/CurrentPeriod';
@@ -6,7 +7,9 @@ import Balance from 'common/elements/Balance';
 import Budget from 'common/elements/Budget';
 import ReportNavTransaction from 'common/elements/ReportNavTransaction';
 import Chart from 'common/elements/Chart';
+import Tooltip from 'common/elements/Tooltip';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
+import { authSelectors } from 'redux/auth';
 import s from './ReportPage.module.scss';
 
 const ReportExpenses = lazy(() =>
@@ -24,6 +27,7 @@ const ReportIncomes = lazy(() =>
 const ReportPage = () => {
   const location = useLocation();
   const activeLocation = location.pathname;
+  let balance = useSelector(authSelectors.getBalance);
 
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
@@ -77,6 +81,7 @@ const ReportPage = () => {
           btnStyle={{ display: 'block' }}
         />
       )}
+      {!balance && <Tooltip />}
       <Budget />
       {mobileMediaQuery && <ReportNavTransaction />}
 

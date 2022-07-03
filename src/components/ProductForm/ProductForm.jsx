@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import GoBackLink from 'common/elements/GoBackLink';
 import Calendar from 'common/elements/Calendar';
 import sprite from '../../images/svg/sprite.svg';
@@ -13,6 +14,8 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const dispatch = useDispatch();
   const date = useSelector(dateSelectors.getSelectedDate);
+  const location = useLocation();
+  const activeLocation = location.pathname;
 
   const [showCategory, setShowCategory] = useState(false);
   const [categoryItem, setCategoryItem] = useState('');
@@ -60,11 +63,16 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
 
     const submittedformData = {
       ...formValues,
+
       date: date,
     };
 
-    console.log(submittedformData);
-    dispatch(transactionOperations.addExpenses(submittedformData));
+    if (activeLocation === '/expenses') {
+      dispatch(transactionOperations.addExpense(submittedformData));
+    } else if (activeLocation === '/incomes') {
+      dispatch(transactionOperations.addIncome(submittedformData));
+    }
+
     resetForm();
   };
 
@@ -128,7 +136,11 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
                 <ul className={s.productFormListBox} id="categories">
                   {incomesCategories &&
                     incomesCategories.map(categorie => (
-                      <li key={categorie} className={s.productFormListItem}>
+                      <li
+                        key={categorie}
+                        className={s.productFormListItem}
+                        onClick={handleCategoryItem}
+                      >
                         {categorie}
                       </li>
                     ))}

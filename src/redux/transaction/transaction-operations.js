@@ -29,7 +29,25 @@ const getExpenseCategories = createAsyncThunk(
   }
 );
 
-const addExpenses = createAsyncThunk(
+const addIncome = createAsyncThunk(
+  'transaction/income',
+  async ({ description, category, amount, date }) => {
+    const number = Number(amount);
+    try {
+      const { data } = await axios.post('/transaction/income', {
+        description: description,
+        category: category,
+        amount: number,
+        date: date,
+      });
+      return data;
+    } catch (error) {
+      // TODO: Добавить обработку ошибки error.message
+    }
+  }
+);
+
+const addExpense = createAsyncThunk(
   'transaction/expense',
   async credentials => {
     try {
@@ -42,9 +60,34 @@ const addExpenses = createAsyncThunk(
   }
 );
 
+const getIncomesData = createAsyncThunk('transaction/income', async () => {
+  try {
+    const { data } = await axios.get('/transaction/income');
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    // TODO: Добавить обработку ошибки error.message
+  }
+});
+
+const getExpensesData = createAsyncThunk('transaction/expense', async () => {
+  try {
+    const { data } = await axios.get('/transaction/expense');
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    // TODO: Добавить обработку ошибки error.message
+  }
+});
+
 const operations = {
   getIncomeCategories,
   getExpenseCategories,
-  addExpenses,
+  addIncome,
+  addExpense,
+  getIncomesData,
+  getExpensesData,
 };
 export default operations;

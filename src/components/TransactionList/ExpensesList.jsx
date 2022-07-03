@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { transactionOperations, transactionSelectors } from 'redux/transaction';
 import { ExpensesListItem } from 'components/TransactionListItem';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import s from './TransactionList.module.scss';
@@ -5,19 +8,38 @@ import s from './TransactionList.module.scss';
 const ExpensesList = () => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
+  const dispatch = useDispatch();
+  const expensesList = useSelector(transactionSelectors.getExpensesData);
+
+  useEffect(() => {
+    dispatch(transactionOperations.getExpensesData());
+  }, [dispatch]);
+
+  // console.log(expensesList);
   return (
     <>
       {tabletMediaQuery && (
         <>
           <ul className={s.expListHeader}>
-            <li className={s.expListHeaderItem}>Дата</li>
-            <li className={s.expListHeaderItem}>Описание</li>
-            <li className={s.expListHeaderItem}>Категория</li>
-            <li className={s.expListHeaderItem}>Сумма</li>
+            <li className={s.expListHeaderItem} key={'Дата'}>
+              Дата
+            </li>
+            <li className={s.expListHeaderItem} key={'Описание'}>
+              Описание
+            </li>
+            <li className={s.expListHeaderItem} key={'Категория'}>
+              Категория
+            </li>
+            <li className={s.expListHeaderItem} key={'Сумма'}>
+              Сумма
+            </li>
           </ul>
           <div className={s.expListBox}>
             <ul className={s.expListItemBox}>
-              <ExpensesListItem />
+              {expensesList &&
+                expensesList.map(expense => (
+                  <ExpensesListItem key={expense._id} {...expense} />
+                ))}
             </ul>
           </div>
         </>

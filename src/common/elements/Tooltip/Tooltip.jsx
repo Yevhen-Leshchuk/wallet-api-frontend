@@ -1,8 +1,8 @@
 import s from './Tooltip.module.scss';
 
-const Tooltip = () => {
+const Tooltip = ({ style }) => {
   return (
-    <div id="overlay" className={s.tooltipBox}>
+    <div id="overlay" className={s.tooltipBox} style={style}>
       <p className={s.tooltipText}>
         Привет! Для начала работы внеси текущий баланс своего счета!
       </p>
