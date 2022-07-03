@@ -59,11 +59,19 @@ const authSlice = createSlice({
       state.userData.balance = action.payload.newBalance;
     },
 
+    [transactionOperations.addIncome.fulfilled](state, action) {
+      state.userData.balance = action.payload.newBalance;
+    },
+
     [transactionOperations.addExpense.fulfilled](state, action) {
       state.userData.balance = action.payload.newBalance;
     },
 
-    [transactionOperations.addIncome.fulfilled](state, action) {
+    [transactionOperations.deleteIncomeItem.fulfilled](state, action) {
+      state.userData.balance = action.payload.newBalance;
+    },
+
+    [transactionOperations.deleteExpenseItem.fulfilled](state, action) {
       state.userData.balance = action.payload.newBalance;
     },
   },

@@ -10,12 +10,17 @@ const ExpensesList = () => {
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const dispatch = useDispatch();
   const expensesList = useSelector(transactionSelectors.getExpensesData);
+  const isAddExpenseItem = useSelector(
+    transactionSelectors.getIsAddExpenseItem
+  );
+  const isDeleteExpenseItem = useSelector(
+    transactionSelectors.getIsDeleteExpenseItem
+  );
 
   useEffect(() => {
     dispatch(transactionOperations.getExpensesData());
-  }, [dispatch]);
+  }, [dispatch, isAddExpenseItem, isDeleteExpenseItem]);
 
-  // console.log(expensesList);
   return (
     <>
       {tabletMediaQuery && (

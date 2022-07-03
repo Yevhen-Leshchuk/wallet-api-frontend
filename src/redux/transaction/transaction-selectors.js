@@ -9,6 +9,12 @@ const getIncomesMonthsStats = state =>
 const getExpensesMonthsStats = state =>
   state.transaction.expensesData.monthsStats;
 
+const getIsAddIncomeItem = state => state.transaction.isAddIncomeItem;
+const getIsDeleteIncomeItem = state => state.transaction.isDeleteIncomeItem;
+
+const getIsAddExpenseItem = state => state.transaction.isAddExpenseItem;
+const getIsDeleteExpenseItem = state => state.transaction.isDeleteExpenseItem;
+
 const transactionSelectors = {
   getIncomesCategories,
   getExpensesCategories,
@@ -16,5 +22,9 @@ const transactionSelectors = {
   getExpensesData,
   getIncomesMonthsStats,
   getExpensesMonthsStats,
+  getIsAddIncomeItem,
+  getIsDeleteIncomeItem,
+  getIsDeleteExpenseItem,
+  getIsAddExpenseItem,
 };
 export default transactionSelectors;

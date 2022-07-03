@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
 const getIncomeCategories = createAsyncThunk(
-  'transaction/income-categories',
+  'transaction/getIncomeCategories',
   async () => {
     try {
       const { data } = await axios.get('/transaction/income-categories');
@@ -17,11 +17,10 @@ const getIncomeCategories = createAsyncThunk(
 );
 
 const getExpenseCategories = createAsyncThunk(
-  'transaction/expense-categories',
+  'transaction/getExpenseCategories',
   async () => {
     try {
       const { data } = await axios.get('/transaction/expense-categories');
-
       return data;
     } catch (error) {
       // TODO: Добавить обработку ошибки error.message
@@ -30,7 +29,7 @@ const getExpenseCategories = createAsyncThunk(
 );
 
 const addIncome = createAsyncThunk(
-  'transaction/income',
+  'transaction/addIncome',
   async ({ description, category, amount, date }) => {
     const number = Number(amount);
     try {
@@ -48,7 +47,7 @@ const addIncome = createAsyncThunk(
 );
 
 const addExpense = createAsyncThunk(
-  'transaction/expense',
+  'transaction/addExpense',
   async credentials => {
     try {
       const { data } = await axios.post('/transaction/expense', credentials);
@@ -60,10 +59,10 @@ const addExpense = createAsyncThunk(
   }
 );
 
-const getIncomesData = createAsyncThunk('transaction/income', async () => {
+const getIncomesData = createAsyncThunk('transaction/getIncome', async () => {
   try {
     const { data } = await axios.get('/transaction/income');
-    console.log(data);
+    // console.log(data);
 
     return data;
   } catch (error) {
@@ -71,16 +70,43 @@ const getIncomesData = createAsyncThunk('transaction/income', async () => {
   }
 });
 
-const getExpensesData = createAsyncThunk('transaction/expense', async () => {
+const getExpensesData = createAsyncThunk('transaction/getExpense', async () => {
   try {
     const { data } = await axios.get('/transaction/expense');
-    console.log(data);
 
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
   }
 });
+
+const deleteIncomeItem = createAsyncThunk(
+  'transaction/deleteIncome',
+  async id => {
+    try {
+      const { data } = await axios.delete(`transaction/${id}`);
+      console.log(data);
+
+      return data;
+    } catch (error) {
+      // TODO: Добавить обработку ошибки error.message
+    }
+  }
+);
+
+const deleteExpenseItem = createAsyncThunk(
+  'transaction/deleteExpense',
+  async id => {
+    try {
+      const { data } = await axios.delete(`transaction/${id}`);
+      console.log(data);
+
+      return data;
+    } catch (error) {
+      // TODO: Добавить обработку ошибки error.message
+    }
+  }
+);
 
 const operations = {
   getIncomeCategories,
@@ -89,5 +115,7 @@ const operations = {
   addExpense,
   getIncomesData,
   getExpensesData,
+  deleteIncomeItem,
+  deleteExpenseItem,
 };
 export default operations;

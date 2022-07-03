@@ -7,6 +7,7 @@ import sprite from '../../images/svg/sprite.svg';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import { dateSelectors } from 'redux/date';
 import { transactionOperations } from 'redux/transaction';
+import { authSelectors } from 'redux/auth';
 import s from './ProductForm.module.scss';
 
 const ProductForm = ({ incomesCategories, expenseCategories }) => {
@@ -14,6 +15,7 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const dispatch = useDispatch();
   const date = useSelector(dateSelectors.getSelectedDate);
+  const balance = useSelector(authSelectors.getBalance);
   const location = useLocation();
   const activeLocation = location.pathname;
 
@@ -63,14 +65,23 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
 
     const submittedformData = {
       ...formValues,
-
       date: date,
     };
 
+    const amount = Number(submittedformData.amount);
+
+    if (amount > balance) {
+      return;
+      //Вставить нотификашку -"транзакция превышает баланс!"
+    }
+
     if (activeLocation === '/expenses') {
       dispatch(transactionOperations.addExpense(submittedformData));
+      dispatch(transactionOperations.getExpensesData());
     } else if (activeLocation === '/incomes') {
       dispatch(transactionOperations.addIncome(submittedformData));
+      dispatch(transactionOperations.getIncomesData());
+      console.log('продакт форма');
     }
 
     resetForm();

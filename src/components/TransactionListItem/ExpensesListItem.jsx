@@ -1,7 +1,11 @@
+import { useDispatch } from 'react-redux';
+import { transactionOperations } from 'redux/transaction';
 import sprite from '../../images/svg/sprite.svg';
 import s from './TransactionListItem.module.scss';
 
 const ExpensesListItem = ({ description, category, amount, date, _id }) => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <li className={s.expListItem} key={_id}>
@@ -19,7 +23,14 @@ const ExpensesListItem = ({ description, category, amount, date, _id }) => {
             {`- ${amount}`}
           </li>
           <div className={s.expListItemBtnBox}>
-            <button type="submit" className={s.expListItemBtn}>
+            <button
+              type="submit"
+              className={s.expListItemBtn}
+              onClick={() => {
+                dispatch(transactionOperations.deleteExpenseItem(_id));
+                dispatch(transactionOperations.getExpensesData());
+              }}
+            >
               <svg className={s.expListItemIcon}>
                 <use xlinkHref={`${sprite}#delete`} />
               </svg>

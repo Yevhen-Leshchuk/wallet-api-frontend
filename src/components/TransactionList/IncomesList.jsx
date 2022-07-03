@@ -8,15 +8,17 @@ import s from './TransactionList.module.scss';
 const IncomesList = () => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
-
   const dispatch = useDispatch();
   const incomesList = useSelector(transactionSelectors.getIncomesData);
+  const isAddIncomeItem = useSelector(transactionSelectors.getIsAddIncomeItem);
+  const isDeleteIncomeItem = useSelector(
+    transactionSelectors.getIsDeleteIncomeItem
+  );
 
   useEffect(() => {
     dispatch(transactionOperations.getIncomesData());
-  }, [dispatch]);
+  }, [dispatch, isAddIncomeItem, isDeleteIncomeItem]);
 
-  // console.log(incomesList);
   return (
     <>
       {tabletMediaQuery && (

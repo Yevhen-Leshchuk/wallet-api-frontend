@@ -26,8 +26,6 @@ const MobilePage = () => {
     dispatch(transactionOperations.getIncomesData());
     dispatch(transactionOperations.getExpensesData());
   }, [dispatch]);
-  console.log(incomesList);
-  console.log(expensesList);
 
   return (
     <div className={s.mobileBox}>

@@ -28,6 +28,12 @@ const initialState = {
     expenses: [],
     monthsStats: [],
   },
+
+  isAddIncomeItem: false,
+  isDeleteIncomeItem: false,
+
+  isAddExpenseItem: false,
+  isDeleteExpenseItem: false,
 };
 
 const transactionSlice = createSlice({
@@ -44,23 +50,34 @@ const transactionSlice = createSlice({
 
     [transactionOperations.addExpense.fulfilled](state, action) {
       state.expense = action.payload;
+      state.isAddExpenseItem = true;
     },
 
     [transactionOperations.addIncome.fulfilled](state, action) {
       state.income = action.payload;
+      state.isAddIncomeItem = true;
     },
 
     [transactionOperations.getIncomesData.fulfilled](state, action) {
-      console.log(action.payload.incomes);
-      console.log(action.payload.monthsStats);
-
       state.incomesData.incomes = action.payload.incomes;
       state.incomesData.monthsStats = action.payload.monthsStats;
+      state.isAddIncomeItem = false;
+      state.isDeleteIncomeItem = false;
     },
 
     [transactionOperations.getExpensesData.fulfilled](state, action) {
       state.expensesData.expenses = action.payload.expenses;
       state.expensesData.monthsStats = action.payload.monthsStats;
+      state.isAddExpenseItem = false;
+      state.isDeleteExpenseItem = false;
+    },
+
+    [transactionOperations.deleteExpenseItem.fulfilled](state, _) {
+      state.isDeleteExpenseItem = true;
+    },
+
+    [transactionOperations.deleteIncomeItem.fulfilled](state, _) {
+      state.isDeleteIncomeItem = true;
     },
   },
 });

@@ -15,7 +15,7 @@ import s from './IncomesPage.module.scss';
 const IncomesPage = () => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
-  let balance = useSelector(authSelectors.getBalance);
+  const balance = useSelector(authSelectors.getBalance);
   const dispatch = useDispatch();
   const incomesCategories = useSelector(
     transactionSelectors.getIncomesCategories
