@@ -51,7 +51,7 @@ const addExpense = createAsyncThunk(
   async credentials => {
     try {
       const { data } = await axios.post('/transaction/expense', credentials);
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       // TODO: Добавить обработку ошибки error.message
@@ -85,7 +85,7 @@ const deleteIncomeItem = createAsyncThunk(
   async id => {
     try {
       const { data } = await axios.delete(`transaction/${id}`);
-      console.log(data);
+      // console.log(data);
 
       return data;
     } catch (error) {
@@ -99,7 +99,7 @@ const deleteExpenseItem = createAsyncThunk(
   async id => {
     try {
       const { data } = await axios.delete(`transaction/${id}`);
-      console.log(data);
+      // console.log(data);
 
       return data;
     } catch (error) {

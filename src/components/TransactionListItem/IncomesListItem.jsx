@@ -1,10 +1,22 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { transactionOperations } from 'redux/transaction';
+import Modal from 'common/elements/Modal';
 import sprite from '../../images/svg/sprite.svg';
 import s from './TransactionListItem.module.scss';
 
 const IncomesListItem = ({ description, category, amount, date, _id }) => {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const onClick = () => {
+    dispatch(transactionOperations.deleteIncomeItem(_id));
+    dispatch(transactionOperations.getIncomesData());
+  };
 
   return (
     <>
@@ -26,10 +38,7 @@ const IncomesListItem = ({ description, category, amount, date, _id }) => {
             <button
               type="submit"
               className={s.incListItemBtn}
-              onClick={() => {
-                dispatch(transactionOperations.deleteIncomeItem(_id));
-                dispatch(transactionOperations.getIncomesData());
-              }}
+              onClick={toggleModal}
             >
               <svg className={s.incListItemIcon}>
                 <use xlinkHref={`${sprite}#delete`} />
@@ -38,6 +47,9 @@ const IncomesListItem = ({ description, category, amount, date, _id }) => {
           </div>
         </ul>
       </li>
+      {showModal && (
+        <Modal onClose={toggleModal} onClick={onClick} text="Вы уверены?" />
+      )}
     </>
   );
 };

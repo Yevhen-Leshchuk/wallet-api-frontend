@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/auth';
 import { createPortal } from 'react-dom';
 import Button from '../Button';
 import sprite from '../../../images/svg/sprite.svg';
@@ -8,9 +6,7 @@ import s from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 
-function Modal({ onClose }) {
-  const dispatch = useDispatch();
-
+function Modal({ onClose, onClick, text }) {
   useEffect(() => {
     window.document.body.style.overflowY = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
@@ -40,10 +36,11 @@ function Modal({ onClose }) {
             <use xlinkHref={`${sprite}#close`} />
           </svg>
         </button>
-        <h2 className={s.title}>Вы действительно хотите выйти?</h2>
+        <h2 className={s.title}>{text}</h2>
+
         <Button
           text="да"
-          onClick={() => dispatch(authOperations.logOut())}
+          onClick={onClick}
           style={{
             marginRight: '15px',
             border: '2px solid #F6F7FC',

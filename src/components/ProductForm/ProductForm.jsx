@@ -70,18 +70,16 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
 
     const amount = Number(submittedformData.amount);
 
-    if (amount > balance) {
-      return;
-      //Вставить нотификашку -"транзакция превышает баланс!"
-    }
-
     if (activeLocation === '/expenses') {
+      if (amount > balance) {
+        return;
+        //Вставить нотификашку -"транзакция превышает баланс!"
+      }
       dispatch(transactionOperations.addExpense(submittedformData));
       dispatch(transactionOperations.getExpensesData());
     } else if (activeLocation === '/incomes') {
       dispatch(transactionOperations.addIncome(submittedformData));
       dispatch(transactionOperations.getIncomesData());
-      console.log('продакт форма');
     }
 
     resetForm();
