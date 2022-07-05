@@ -7,6 +7,7 @@
   background-color: $lightGray1;
   border: 2px solid $white;
   border-radius: 22px 22px 22px 0px;
+  overflow: hidden;
 
   @include desktop {
     position: absolute;
@@ -19,8 +20,9 @@
   width: 230px;
   height: 283px;
 
-  border: 2px solid $white;
-  border-radius: 22px 22px 22px 0px;
+  overflow-y: scroll;
+  // border: 2px solid $white;
+  // border-radius: 22px 22px 22px 0px;
 }
 
 .briefListItem {
@@ -35,14 +37,26 @@
   border-bottom: 2px solid $white;
 }
 
+.briefListItem:first-child {
+  border-top: 2px solid $white;
+}
+
 .briefListItemHeader {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  // border-bottom: 2px solid $white;
+
   @include fontProperty($weight: 700, $transform: uppercase);
 }
 
-.briefListText {
+.briefListItemText {
   @include fontProperty($transform: uppercase, $text-align: left);
 }
 
-.briefListItem:last-child {
-  border-radius: 22px 22px 22px 0px;
+.briefListItemCount {
+  composes: briefListItemText;
 }
+
+// .briefListItem:last-child {
+//   border-radius: 22px 22px 22px 0px;
+// }

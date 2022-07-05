@@ -16,13 +16,14 @@ import s from './ExpensesPage.module.scss';
 const ExpensesPage = () => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
-  let balance = useSelector(authSelectors.getBalance);
+  let navigate = useNavigate();
   const dispatch = useDispatch();
+  let balance = useSelector(authSelectors.getBalance);
+  const briefList = useSelector(transactionSelectors.getExpensesMonthsStats);
   const expenseCategories = useSelector(
     transactionSelectors.getExpensesCategories
   );
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  let navigate = useNavigate();
 
   useEffect(() => {
     dispatch(transactionOperations.getExpenseCategories());
@@ -57,7 +58,7 @@ const ExpensesPage = () => {
         <ProductForm expenseCategories={expenseCategories} />
         {tabletMediaQuery && <ExpensesList />}
       </div>
-      {tabletMediaQuery && <Brief />}
+      {tabletMediaQuery && <Brief briefList={briefList} />}
     </div>
   );
 };

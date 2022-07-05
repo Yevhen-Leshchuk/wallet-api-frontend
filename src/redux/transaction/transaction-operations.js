@@ -73,7 +73,7 @@ const getIncomesData = createAsyncThunk('transaction/getIncome', async () => {
 const getExpensesData = createAsyncThunk('transaction/getExpense', async () => {
   try {
     const { data } = await axios.get('/transaction/expense');
-
+    console.log(data);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
