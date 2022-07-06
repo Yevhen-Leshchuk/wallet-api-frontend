@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth';
 import { transactionReducer } from './transaction';
 import { selectedDateReducer } from './date/date-slice';
+import { reportReducer } from './report';
 
 const middleware = getDefaultMiddleware => [
   ...getDefaultMiddleware({
@@ -35,6 +36,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     transaction: transactionReducer,
     date: selectedDateReducer,
+    report: reportReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware,

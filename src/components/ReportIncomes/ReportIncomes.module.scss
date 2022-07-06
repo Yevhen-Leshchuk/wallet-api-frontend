@@ -49,8 +49,6 @@
   border-bottom: 1px solid $lightGray8;
 
   @include tablet {
-    flex-basis: calc(17% - 20px);
-
     height: 113px;
     margin-right: 20px;
     margin-bottom: 40px;

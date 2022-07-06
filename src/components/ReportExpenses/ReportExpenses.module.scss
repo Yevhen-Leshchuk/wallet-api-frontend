@@ -28,7 +28,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-right: -20px;
+  // margin-right: -20px;
 
   @include tablet {
     justify-content: center;
@@ -37,6 +37,7 @@
 
 .reportExpensesItem {
   display: flex;
+  // flex-basis: calc(31.3% - 0px);
   flex-direction: column;
   align-items: center;
 
@@ -46,10 +47,11 @@
   padding-right: 15px;
   padding-bottom: 20px;
   border-bottom: 1px solid $lightGray8;
+  cursor: pointer;
 
   @include tablet {
-    flex-basis: calc(17% - 20px);
-
+    // flex-basis: calc(17% - 20px);
+    width: 84px;
     height: 113px;
     margin-right: 20px;
     margin-bottom: 40px;
@@ -59,28 +61,34 @@
   }
 }
 
-.reportExpensesItem:nth-child(3n + 3) {
-  padding-right: 0;
-}
-
-.reportExpensesItem:nth-child(6) {
-  @include tablet {
-    margin-right: 0;
+.reportExpensesItem:nth-child(10) {
+  @include mobile {
+    margin-bottom: 0;
   }
 }
 
-.reportExpensesItem:nth-last-child(-n + 2) {
-  margin-bottom: 0;
+.reportExpensesItem:nth-child(11) {
+  @include mobile {
+    margin-bottom: 0;
+  }
 }
 
-.reportExpensesItem:nth-last-child(2) {
-  width: 141px;
-  margin-left: auto;
-  padding-right: 0;
+.reportExpensesItem:nth-child(-n + 3) {
+  @include mobile {
+    padding-right: 15px;
+    margin-bottom: 20px;
+  }
+}
 
+.reportExpensesItem:nth-child(3n) {
+  @include mobile {
+    padding-right: 0;
+  }
+}
+
+.reportExpensesItem:nth-child(6n) {
   @include tablet {
-    width: 94px;
-    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -91,8 +99,6 @@
 }
 
 .reportExpensesItem:last-child {
-  width: 141px;
-  margin-right: auto;
   padding-right: 0;
 
   @include tablet {
