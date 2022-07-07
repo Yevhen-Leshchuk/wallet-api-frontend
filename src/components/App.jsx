@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { authOperations } from 'redux/auth';
+import { authOperations, authSelectors } from 'redux/auth';
 import Layout from './Layout';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 
@@ -32,8 +32,16 @@ function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const activeLocation = location.pathname;
+  const error = useSelector(authSelectors.getError);
 
   const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
+
+  useEffect(() => {
+    if (!error) {
+      return;
+    }
+    navigate('/');
+  }, [error, navigate]);
 
   useEffect(() => {
     dispatch(authOperations.getUser());

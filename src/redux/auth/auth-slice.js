@@ -15,6 +15,7 @@ const initialState = {
   refreshToken: null,
   isLoggedIn: false,
   isFetchingCurrentUser: false,
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -25,6 +26,7 @@ const authSlice = createSlice({
       state.userData.email = action.payload.email;
       state.userData.id = action.payload.id;
     },
+
     [authOperations.logIn.fulfilled](state, action) {
       state.userData = action.payload.userData;
       state.sid = action.payload.sid;
@@ -32,6 +34,7 @@ const authSlice = createSlice({
       state.refreshToken = action.payload.refreshToken;
       state.isLoggedIn = true;
     },
+
     [authOperations.logOut.fulfilled](state) {
       state.userData = {
         email: null,
@@ -44,17 +47,25 @@ const authSlice = createSlice({
       state.refreshToken = null;
       state.isLoggedIn = false;
     },
+
     [authOperations.refresh.fulfilled](state, action) {
       state.accessToken = action.payload.newAccessToken;
       state.refreshToken = action.payload.newRefreshToken;
       state.sid = action.payload.newSid;
     },
+
     [authOperations.getUser.fulfilled](state, action) {
       state.userData.email = action.payload.email;
       state.userData.balance = action.payload.balance;
       state.userData.transactions = action.payload.transactions;
       state.isLoggedIn = true;
+      state.error = null;
     },
+
+    [authOperations.getUser.rejected](state, action) {
+      state.error = action.payload;
+    },
+
     [authOperations.updateUserBalance.fulfilled](state, action) {
       state.userData.balance = action.payload.newBalance;
     },

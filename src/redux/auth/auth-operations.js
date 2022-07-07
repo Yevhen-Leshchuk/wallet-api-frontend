@@ -3,15 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
-// const refreshToken = {
-//   set(refreshToken) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
-
 const accessToken = {
   set(accessToken) {
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -100,6 +91,8 @@ const getUser = createAsyncThunk('auth/user', async (_, thunkAPI) => {
     const { data } = await axios.get('/user');
     return data;
   } catch (error) {
+    console.log(error.message);
+    return thunkAPI.rejectWithValue('Request failed with status code 401');
     // TODO: Добавить обработку ошибки error.message
   }
 });
