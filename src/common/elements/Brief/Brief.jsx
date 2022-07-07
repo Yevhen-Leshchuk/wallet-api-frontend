@@ -1,7 +1,6 @@
 import s from './Brief.module.scss';
 
 const Brief = ({ briefList }) => {
-  console.log(briefList);
   return (
     <div className={s.briefBox}>
       <h2 className={s.briefListItemHeader}>Сводка</h2>

@@ -6,7 +6,6 @@ import CurrentPeriod from 'common/elements/CurrentPeriod';
 import Balance from 'common/elements/Balance';
 import Budget from 'common/elements/Budget';
 import ReportNavTransaction from 'common/elements/ReportNavTransaction';
-import Chart from 'common/elements/Chart';
 import Tooltip from 'common/elements/Tooltip';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import { authSelectors } from 'redux/auth';
@@ -89,8 +88,6 @@ const ReportPage = () => {
         <Route path="expenses" element={<ReportExpenses />} />
         <Route path="incomes" element={<ReportIncomes />} />
       </Routes>
-
-      <Chart />
     </div>
   );
 };

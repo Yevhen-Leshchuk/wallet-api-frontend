@@ -2,15 +2,13 @@
 
 .chartBox {
   width: 100%;
-  max-width: 320px;
-  height: auto;
 
   @include tablet {
     order: 6;
     width: 670px;
     max-width: none;
     height: 425px;
-    padding: 50px 30px 45px 30px;
+    padding: 50px 5px 50px 5px;
     background-color: $white;
     border-radius: 30px;
     box-shadow: $shadowProductFormBox;
@@ -18,103 +16,6 @@
 
   @include desktop {
     width: 100%;
-    padding: 50px 150px 20px 150px;
+    padding: 20px 150px 20px 150px;
   }
-}
-
-.chartBackgroundBox {
-  @include tablet {
-    display: flex;
-    justify-content: center;
-
-    width: 595px;
-    height: 340px;
-    margin-left: auto;
-    margin-right: auto;
-
-    background: url(../../../images/img/report-page/lines-mobile.png);
-    background-repeat: no-repeat;
-    background-position: 0px 65px;
-  }
-  @include desktop {
-    width: 760px;
-
-    background: url(../../../images/img/report-page/lines-desktop.png);
-    background-repeat: no-repeat;
-    background-position: 0px 65px;
-  }
-}
-
-.chartList {
-  position: relative;
-
-  width: 100%;
-  height: 15px;
-  max-width: 320px;
-  margin-bottom: 35px;
-
-  background-color: $orangeLight;
-  border-radius: 0px 22px 22px 0px;
-
-  @include tablet {
-    width: 38px;
-    height: 100%;
-    margin-right: 25px;
-    margin-bottom: 0;
-    border-radius: 10px 10px 0px 0px;
-  }
-}
-
-.chartList:first-child {
-  @include tablet {
-    margin-left: 15px;
-  }
-
-  @include desktop {
-    margin-left: 80px;
-  }
-}
-
-.chartList:last-child {
-  margin-right: 0;
-
-  @include tablet {
-    margin-right: 15px;
-  }
-
-  @include desktop {
-    margin-right: 80px;
-  }
-}
-
-.chartItemTitle {
-  position: absolute;
-  top: -15px;
-  left: 0;
-
-  margin-bottom: 7px;
-  @include fontProperty(
-    $size: 10px,
-    $height: 1.12,
-    $letter-spacing: 0.02em,
-    $text-align: left
-  );
-
-  @include tablet {
-    top: 345px;
-  }
-}
-
-.chartItemCount {
-  position: absolute;
-  top: -15px;
-  right: 0;
-
-  margin-bottom: 7px;
-  @include fontProperty(
-    $size: 10px,
-    $height: 1.12,
-    $letter-spacing: 0.02em,
-    $text-align: right
-  );
 }

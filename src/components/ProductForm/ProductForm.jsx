@@ -49,6 +49,8 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
   };
 
   const handleCategoryItem = event => {
+    event.preventDefault();
+
     setCategoryItem(event.target.innerText);
     setShowCategory(!showCategory);
   };

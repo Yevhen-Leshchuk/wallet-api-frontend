@@ -12,13 +12,13 @@ const Budget = () => {
         <li className={s.budgetListItem}>
           <p className={s.budgetListItemText}>Расходы:</p>
           <span className={s.budgetListItemExp}>
-            {incomesTotal && `- ${incomesTotal} €`}
+            {expensesTotal && `- ${expensesTotal} €`}
           </span>
         </li>
         <li className={s.budgetListItem}>
           <p className={s.budgetListItemText}>Доходы:</p>
           <span className={s.budgetListItemInc}>
-            {expensesTotal && `+ ${expensesTotal} €`}
+            {incomesTotal && `+ ${incomesTotal} €`}
           </span>
         </li>
       </ul>
