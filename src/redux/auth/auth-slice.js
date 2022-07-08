@@ -36,6 +36,15 @@ const authSlice = createSlice({
       state.error = null;
     },
 
+    // [authOperations.googleLogIn.fulfilled](state, action) {
+    //   state.userData = action.payload.userData;
+    //   state.sid = action.payload.sid;
+    //   state.accessToken = action.payload.accessToken;
+    //   state.refreshToken = action.payload.refreshToken;
+    //   state.isLoggedIn = true;
+    //   state.error = null;
+    // },
+
     [authOperations.logOut.fulfilled](state) {
       state.userData = {
         email: null,

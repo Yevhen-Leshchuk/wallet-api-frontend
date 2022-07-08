@@ -21,6 +21,19 @@ const register = createAsyncThunk('auth/register', async credentials => {
   }
 });
 
+// const googleLogIn = createAsyncThunk('auth/googleLogin', async () => {
+//   try {
+//     const { data } = await axios.get('/auth/google');
+//     // accessToken.set(data.accessToken);
+//     // refreshToken.set(data.refreshToken);
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//     // TODO: Добавить обработку ошибки error.message
+//   }
+// });
+
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
@@ -100,6 +113,7 @@ const getUser = createAsyncThunk('auth/user', async (_, thunkAPI) => {
 const operations = {
   register,
   logIn,
+  // googleLogIn,
   logOut,
   refresh,
   getUser,

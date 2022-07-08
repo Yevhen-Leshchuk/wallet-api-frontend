@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/auth';
+import sprite from '../../images/svg/sprite.svg';
 import s from './AuthForm.module.scss';
 
 const validationSchema = Yup.object({
@@ -48,14 +49,23 @@ const AuthForm = () => {
 
   return (
     <div className={s.formBox}>
-      <p className={s.googleText}>Вы можете авторизоваться c помощью</p>
+      {/* <p className={s.googleText}>Вы можете авторизоваться c помощью</p>
       <p className={s.googleText}>Google Account:</p>
-      <button type="submit" className={s.buttonGoogle}>
+      <button
+        type="submit"
+        className={s.buttonGoogle}
+        onClick={() => dispatch(authOperations.googleLogIn())}
+      >
         <div className={s.googleLogo}></div>
         <p className={s.btnText}>Google</p>
-      </button>
-      <p className={s.googleText}>Или зайти c помощью e-mail и пароля,</p>
-      <p className={s.googleText}>предварительно зарегистрировавшись:</p>
+      </button> */}
+      <div className={s.logoBox}>
+        <svg className={s.logoIcon}>
+          <use xlinkHref={`${sprite}#cabbage`} />
+        </svg>
+      </div>
+      {/* <p className={s.authText}>Зайдите c помощью e-mail и пароля,</p>
+      <p className={s.authText}>предварительно зарегистрировавшись:</p> */}
 
       <Formik
         initialValues={initialValues}
