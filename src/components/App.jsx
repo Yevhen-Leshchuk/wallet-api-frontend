@@ -4,6 +4,8 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/auth';
 import Layout from './Layout';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const AuthPage = lazy(() =>
   import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */)
@@ -40,8 +42,9 @@ function App() {
     if (!error) {
       return;
     }
-    navigate('/');
-  }, [error, navigate]);
+    // navigate('/');
+    dispatch(authOperations.logOut());
+  }, [error, dispatch]);
 
   useEffect(() => {
     dispatch(authOperations.getUser());
@@ -58,12 +61,47 @@ function App() {
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index path="/" element={<AuthPage />} />
-            <Route path="expenses" element={<ExpensesPage />} />
-            <Route path="incomes" element={<IncomesPage />} />
-            <Route path="report/*" element={<ReportPage />} />
+            <Route
+              path="/"
+              element={
+                <PublicRoute restricted redirectTo="/expenses">
+                  <AuthPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="expenses"
+              element={
+                <PrivateRoute redirectTo="/">
+                  <ExpensesPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="incomes"
+              element={
+                <PrivateRoute redirectTo="/">
+                  <IncomesPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="report/*"
+              element={
+                <PrivateRoute redirectTo="/">
+                  <ReportPage />
+                </PrivateRoute>
+              }
+            />
             {!mobileMediaQuery && (
-              <Route path="mobile" element={<MobilePage />} />
+              <Route
+                path="mobile"
+                element={
+                  <PrivateRoute redirectTo="/">
+                    <MobilePage />
+                  </PrivateRoute>
+                }
+              />
             )}
           </Route>
         </Routes>

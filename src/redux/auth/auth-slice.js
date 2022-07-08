@@ -33,6 +33,7 @@ const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.isLoggedIn = true;
+      state.error = null;
     },
 
     [authOperations.logOut.fulfilled](state) {
@@ -46,6 +47,7 @@ const authSlice = createSlice({
       state.accessToken = null;
       state.refreshToken = null;
       state.isLoggedIn = false;
+      state.error = null;
     },
 
     [authOperations.refresh.fulfilled](state, action) {
@@ -59,7 +61,6 @@ const authSlice = createSlice({
       state.userData.balance = action.payload.balance;
       state.userData.transactions = action.payload.transactions;
       state.isLoggedIn = true;
-      state.error = null;
     },
 
     [authOperations.getUser.rejected](state, action) {
