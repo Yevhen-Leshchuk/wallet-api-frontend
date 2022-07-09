@@ -5,30 +5,28 @@ axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
 const getIncomesReport = createAsyncThunk(
   '/report/getIncomesReport',
-  async date => {
+  async (date, thunkAPI) => {
     try {
       const { data } = await axios.get(
         `/transaction/period-data/?date=${date}`
       );
-      // console.log(data);
       return data;
     } catch (error) {
-      // TODO: Добавить обработку ошибки error.message
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 const getExpensesReport = createAsyncThunk(
   '/report/getExpensesReport',
-  async date => {
+  async (date, thunkAPI) => {
     try {
       const { data } = await axios.get(
         `/transaction/period-data/?date=${date}`
       );
-      // console.log(data);
       return data;
     } catch (error) {
-      // TODO: Добавить обработку ошибки error.message
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

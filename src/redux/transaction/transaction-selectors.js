@@ -15,6 +15,8 @@ const getIsDeleteIncomeItem = state => state.transaction.isDeleteIncomeItem;
 const getIsAddExpenseItem = state => state.transaction.isAddExpenseItem;
 const getIsDeleteExpenseItem = state => state.transaction.isDeleteExpenseItem;
 
+const getTransactionError = state => state.transaction.error;
+
 const transactionSelectors = {
   getIncomesCategories,
   getExpensesCategories,
@@ -26,5 +28,6 @@ const transactionSelectors = {
   getIsDeleteIncomeItem,
   getIsDeleteExpenseItem,
   getIsAddExpenseItem,
+  getTransactionError,
 };
 export default transactionSelectors;

@@ -12,63 +12,54 @@ const accessToken = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/auth/register', credentials);
-    return data;
-  } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/auth/register', credentials);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-// const googleLogIn = createAsyncThunk('auth/googleLogin', async () => {
-//   try {
-//     const { data } = await axios.get('/auth/google');
-//     // accessToken.set(data.accessToken);
-//     // refreshToken.set(data.refreshToken);
-//     console.log(data);
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//     // TODO: Добавить обработку ошибки error.message
-//   }
-// });
-
-const logIn = createAsyncThunk('auth/login', async credentials => {
+const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
     accessToken.set(data.accessToken);
-    // refreshToken.set(data.refreshToken);
 
     return data;
   } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
-const logOut = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/auth/logout');
-    // refreshToken.unset();
   } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
-const updateUserBalance = createAsyncThunk('auth/balance', async newBalance => {
-  try {
-    const { data } = await axios.patch('/user/balance', {
-      newBalance: newBalance,
-    });
+const updateUserBalance = createAsyncThunk(
+  'auth/balance',
+  async (newBalance, thunkAPI) => {
+    try {
+      const { data } = await axios.patch('/user/balance', {
+        newBalance: newBalance,
+      });
 
-    // refreshToken.set(data.refreshToken);
-    accessToken.set(data.accessToken);
+      accessToken.set(data.accessToken);
 
-    return data;
-  } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   const state = thunkAPI.getState();
@@ -76,17 +67,15 @@ const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   const userSid = state.auth.sid;
 
   if (persistedToken === null) {
-    console.log('Токена нет, уходим из fetchCurrentUser');
     return thunkAPI.rejectWithValue();
   }
 
-  // refreshToken.set(persistedToken);
   try {
     const { data } = await axios.post('/auth/refresh', { sid: userSid });
-    console.log(data);
+
     return data;
   } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -95,25 +84,22 @@ const getUser = createAsyncThunk('auth/user', async (_, thunkAPI) => {
   const persistedToken = state.auth.accessToken;
 
   if (persistedToken === null) {
-    console.log('Токена нет, уходим из fetchCurrentUser');
     return thunkAPI.rejectWithValue();
   }
 
   accessToken.set(persistedToken);
   try {
     const { data } = await axios.get('/user');
+
     return data;
   } catch (error) {
-    console.log(error.message);
-    return thunkAPI.rejectWithValue('Request failed with status code 401');
-    // TODO: Добавить обработку ошибки error.message
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
 const operations = {
   register,
   logIn,
-  // googleLogIn,
   logOut,
   refresh,
   getUser,

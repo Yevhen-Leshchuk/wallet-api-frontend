@@ -4,8 +4,8 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/auth';
 import Layout from './Layout';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
+import PrivateRoute from 'routes/PrivateRoute';
+import PublicRoute from 'routes/PublicRoute';
 
 const AuthPage = lazy(() =>
   import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */)
@@ -34,15 +34,17 @@ function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const activeLocation = location.pathname;
-  const error = useSelector(authSelectors.getError);
-
+  const error = useSelector(authSelectors.getAuthError);
   const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
 
   useEffect(() => {
     if (!error) {
       return;
     }
-    dispatch(authOperations.logOut());
+
+    if (!error?.message === 'Request failed with status code 401') {
+      dispatch(authOperations.logOut());
+    }
   }, [error, dispatch]);
 
   useEffect(() => {

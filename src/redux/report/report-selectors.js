@@ -7,6 +7,8 @@ const getExpenseTotal = state => state.report.expenses.expenseTotal;
 const getIncomesData = state => state.report.incomes.incomesData;
 const getExpensesData = state => state.report.expenses.expensesData;
 
+const getReportError = state => state.report.error;
+
 const transactionSelectors = {
   getIncomesTransactionPeriodData,
   getExpensesTransactionPeriodData,
@@ -14,5 +16,6 @@ const transactionSelectors = {
   getExpenseTotal,
   getIncomesData,
   getExpensesData,
+  getReportError,
 };
 export default transactionSelectors;

@@ -10,6 +10,7 @@ const initialState = {
     incomesTotal: null,
     incomesData: {},
   },
+  error: null,
 };
 
 const reportSlice = createSlice({
@@ -18,10 +19,18 @@ const reportSlice = createSlice({
   extraReducers: {
     [reportOperations.getIncomesReport.fulfilled](state, action) {
       state.incomes = action.payload.incomes;
+      state.error = null;
+    },
+    [reportOperations.getIncomesReport.rejected](state, action) {
+      state.error = action.payload;
     },
 
     [reportOperations.getExpensesReport.fulfilled](state, action) {
       state.expenses = action.payload.expenses;
+      state.error = null;
+    },
+    [reportOperations.getExpensesReport.rejected](state, action) {
+      state.error = action.payload;
     },
   },
 });
