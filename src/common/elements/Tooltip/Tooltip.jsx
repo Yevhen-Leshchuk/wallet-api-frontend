@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Tooltip.module.scss';
 
 const Tooltip = ({ style }) => {
@@ -11,6 +12,10 @@ const Tooltip = ({ style }) => {
       </p>
     </div>
   );
+};
+
+Tooltip.propTypes = {
+  style: PropTypes.object,
 };
 
 export default Tooltip;

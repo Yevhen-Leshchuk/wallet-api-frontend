@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useMemo, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { authSelectors, authOperations } from 'redux/auth';
-
 import s from './Balance.module.scss';
 
 const Balance = ({ inputStyle, btnStyle, balanceBoxStyle }) => {
@@ -39,11 +39,6 @@ const Balance = ({ inputStyle, btnStyle, balanceBoxStyle }) => {
           type="text"
           placeholder="00.00 €"
           autoComplete="off"
-          // defaultValue={
-          //   parseFloat(
-          //     balance && typeof balance === 'number' ? balance : 0
-          //   ).toFixed(2) + ' €'
-          // }
           defaultValue={value}
         />
         <button className={s.balanceFormBtn} style={btnStyle} type="submit">
@@ -52,6 +47,12 @@ const Balance = ({ inputStyle, btnStyle, balanceBoxStyle }) => {
       </form>
     </div>
   );
+};
+
+Balance.propTypes = {
+  inputStyle: PropTypes.object,
+  btnStyle: PropTypes.object,
+  balanceBoxStyle: PropTypes.object,
 };
 
 export default Balance;

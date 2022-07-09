@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import GoBackLink from 'common/elements/GoBackLink';
 import Calendar from 'common/elements/Calendar';
 import sprite from '../../images/svg/sprite.svg';
@@ -200,6 +201,11 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
       </div>
     </>
   );
+};
+
+ProductForm.propTypes = {
+  incomesCategories: PropTypes.array,
+  expenseCategories: PropTypes.array,
 };
 
 export default ProductForm;

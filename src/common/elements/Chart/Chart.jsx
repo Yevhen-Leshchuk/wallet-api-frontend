@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -118,6 +119,13 @@ const Chart = ({ chartData, transactionCategory, expenseValue, event }) => {
       <Bar options={options} data={data} plugins={[ChartDataLabels]} />
     </div>
   );
+};
+
+Chart.propTypes = {
+  chartData: PropTypes.object,
+  transactionCategory: PropTypes.array,
+  expenseValue: PropTypes.array,
+  event: PropTypes.object,
 };
 
 export default Chart;

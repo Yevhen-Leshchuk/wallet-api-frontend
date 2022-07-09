@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Button.module.scss';
 
 const Button = ({ text, style, onClick }) => {
@@ -13,6 +14,12 @@ const Button = ({ text, style, onClick }) => {
       </button>
     </>
   );
+};
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Button;

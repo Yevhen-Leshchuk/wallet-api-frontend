@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Brief.module.scss';
 
 const Brief = ({ briefList }) => {
@@ -17,6 +18,10 @@ const Brief = ({ briefList }) => {
       </ul>
     </div>
   );
+};
+
+Brief.propTypes = {
+  briefList: PropTypes.object,
 };
 
 export default Brief;

@@ -8,7 +8,7 @@ import Chart from 'common/elements/Chart';
 import s from './ReportIncomes.module.scss';
 
 const ReportIncomes = () => {
-  const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
+  // const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const [incomeCategory, setIncomeCategory] = useState([]);
   const [incomeValue, setIncomeValue] = useState([]);

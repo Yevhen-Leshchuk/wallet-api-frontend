@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { reportOperations } from 'redux/report';
 import sprite from '../../../images/svg/sprite.svg';
 import moment from 'moment';
@@ -63,6 +64,10 @@ const CurrentPeriod = ({ style }) => {
       </div>
     </div>
   );
+};
+
+CurrentPeriod.propTypes = {
+  style: PropTypes.object,
 };
 
 export default CurrentPeriod;

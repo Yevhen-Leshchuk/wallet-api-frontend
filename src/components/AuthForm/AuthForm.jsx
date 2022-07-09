@@ -64,8 +64,8 @@ const AuthForm = () => {
           <use xlinkHref={`${sprite}#cabbage`} />
         </svg>
       </div>
-      {/* <p className={s.authText}>Зайдите c помощью e-mail и пароля,</p>
-      <p className={s.authText}>предварительно зарегистрировавшись:</p> */}
+      {/* <p className={s.googleText}>Зайдите c помощью e-mail и пароля,</p>
+      <p className={s.googleText}>предварительно зарегистрировавшись:</p> */}
 
       <Formik
         initialValues={initialValues}

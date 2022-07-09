@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import sprite from '../../../images/svg/sprite.svg';
 import s from './LinkToReport.module.scss';
@@ -15,6 +16,10 @@ const LinkToReport = ({ redirectTo = '/report/expenses' }) => {
       </Link>
     </div>
   );
+};
+
+LinkToReport.propTypes = {
+  redirectTo: PropTypes.string,
 };
 
 export default LinkToReport;

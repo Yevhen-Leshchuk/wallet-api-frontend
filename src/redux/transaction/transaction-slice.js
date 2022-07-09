@@ -20,13 +20,13 @@ const initialState = {
   },
 
   incomesData: {
-    incomes: [],
-    monthsStats: [],
+    incomes: null,
+    monthsStats: null,
   },
 
   expensesData: {
-    expenses: [],
-    monthsStats: [],
+    expenses: null,
+    monthsStats: null,
   },
 
   isAddIncomeItem: false,

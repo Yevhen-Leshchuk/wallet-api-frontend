@@ -6,7 +6,7 @@ import useMediaQuery from 'common/hooks/mediaRulesHook';
 import s from './TransactionList.module.scss';
 
 const ExpensesList = () => {
-  const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
+  // const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const dispatch = useDispatch();
   const expensesList = useSelector(transactionSelectors.getExpensesData);

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { transactionOperations } from 'redux/transaction';
 import Modal from 'common/elements/Modal';
 import sprite from '../../images/svg/sprite.svg';
@@ -52,6 +53,14 @@ const IncomesListItem = ({ description, category, amount, date, _id }) => {
       )}
     </>
   );
+};
+
+IncomesListItem.propTypes = {
+  description: PropTypes.string,
+  category: PropTypes.string,
+  amount: PropTypes.number,
+  date: PropTypes.string,
+  _id: PropTypes.string,
 };
 
 export default IncomesListItem;

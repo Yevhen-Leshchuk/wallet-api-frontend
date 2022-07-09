@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import Button from '../Button';
 import sprite from '../../../images/svg/sprite.svg';
 import s from './Modal.module.scss';
@@ -60,5 +61,11 @@ function Modal({ onClose, onClick, text }) {
     modalRoot
   );
 }
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
 export default Modal;

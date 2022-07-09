@@ -42,7 +42,6 @@ function App() {
     if (!error) {
       return;
     }
-    // navigate('/');
     dispatch(authOperations.logOut());
   }, [error, dispatch]);
 
