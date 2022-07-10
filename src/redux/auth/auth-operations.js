@@ -1,5 +1,9 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  errorMessage,
+  successMessage,
+} from 'common/notifications/notification';
 
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
@@ -17,9 +21,11 @@ const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/auth/register', credentials);
+      successMessage('Вы успешно зарегистрированы!');
 
       return data;
     } catch (error) {
+      errorMessage('Такой пользователь уже существует!');
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -29,9 +35,10 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
     accessToken.set(data.accessToken);
-
+    successMessage('Добро пожаловать в wallet!');
     return data;
   } catch (error) {
+    errorMessage('Неверный логин, или пароль!');
     return thunkAPI.rejectWithValue(error);
   }
 });

@@ -21,22 +21,11 @@ const initialValues = {
 };
 
 const AuthForm = () => {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const [action, setAction] = useState('');
 
-  let navigate = useNavigate();
   const dispatch = useDispatch();
-
   const emailInputId = nanoid();
   const passwordInputId = nanoid();
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      return;
-    }
-
-    navigate('/expenses');
-  }, [isLoggedIn, navigate]);
 
   const onSubmit = (values, { resetForm }) => {
     if (action === 'register') {

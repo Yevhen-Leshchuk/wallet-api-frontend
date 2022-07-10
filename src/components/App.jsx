@@ -1,6 +1,8 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { ToastContainer, Zoom } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import { authOperations, authSelectors } from 'redux/auth';
 import Layout from './Layout';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
@@ -38,14 +40,10 @@ function App() {
   const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
 
   useEffect(() => {
-    if (!error) {
-      return;
-    }
-
-    if (!error?.message === 'Request failed with status code 401') {
+    if (error?.message === 'Request failed with status code 401') {
       dispatch(authOperations.logOut());
     }
-  }, [error, dispatch]);
+  }, [dispatch, navigate, error]);
 
   useEffect(() => {
     dispatch(authOperations.getUser());
@@ -107,6 +105,14 @@ function App() {
           </Route>
         </Routes>
       </Suspense>
+      <ToastContainer
+        transition={Zoom}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }
