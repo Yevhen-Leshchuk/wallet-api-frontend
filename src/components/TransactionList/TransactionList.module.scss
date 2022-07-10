@@ -71,3 +71,25 @@
   border-radius: 2px;
   height: 130px;
 }
+
+.enter {
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.enterActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 500ms linear;
+}
+
+.exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.exitActive {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: all 500ms linear;
+}

@@ -46,8 +46,12 @@ function App() {
   }, [dispatch, navigate, error]);
 
   useEffect(() => {
+    if (error?.message === 'Request failed with status code 401') {
+      return;
+    }
+
     dispatch(authOperations.getUser());
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   useEffect(() => {
     if (mobileMediaQuery && activeLocation === '/mobile') {

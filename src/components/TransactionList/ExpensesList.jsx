@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { transactionOperations, transactionSelectors } from 'redux/transaction';
 import { ExpensesListItem } from 'components/TransactionListItem';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import s from './TransactionList.module.scss';
 
 const ExpensesList = () => {
-  // const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const dispatch = useDispatch();
   const expensesList = useSelector(transactionSelectors.getExpensesData);
+  const reverseExpenses = expensesList?.map(expense => expense).reverse();
+
   const isAddExpenseItem = useSelector(
     transactionSelectors.getIsAddExpenseItem
   );
@@ -40,12 +42,14 @@ const ExpensesList = () => {
             </li>
           </ul>
           <div className={s.expListBox}>
-            <ul className={s.expListItemBox}>
-              {expensesList &&
-                expensesList.map(expense => (
-                  <ExpensesListItem key={expense._id} {...expense} />
+            <TransitionGroup component="ul" className={s.expListItemBox}>
+              {reverseExpenses &&
+                reverseExpenses.map(expense => (
+                  <CSSTransition key={expense._id} timeout={500} classNames={s}>
+                    <ExpensesListItem id={expense._id} {...expense} />
+                  </CSSTransition>
                 ))}
-            </ul>
+            </TransitionGroup>
           </div>
         </>
       )}

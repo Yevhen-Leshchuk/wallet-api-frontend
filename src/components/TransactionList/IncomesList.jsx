@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { transactionOperations, transactionSelectors } from 'redux/transaction';
 import { IncomesListItem } from 'components/TransactionListItem';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import s from './TransactionList.module.scss';
 
 const IncomesList = () => {
-  // const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const dispatch = useDispatch();
   const incomesList = useSelector(transactionSelectors.getIncomesData);
+  const reverseIncomes = incomesList?.map(income => income).reverse();
+
   const isAddIncomeItem = useSelector(transactionSelectors.getIsAddIncomeItem);
   const isDeleteIncomeItem = useSelector(
     transactionSelectors.getIsDeleteIncomeItem
@@ -38,12 +40,14 @@ const IncomesList = () => {
             </li>
           </ul>
           <div className={s.incListBox}>
-            <ul className={s.incListItemBox}>
-              {incomesList &&
-                incomesList.map(income => (
-                  <IncomesListItem key={income._id} {...income} />
+            <TransitionGroup component="ul" className={s.incListItemBox}>
+              {reverseIncomes &&
+                reverseIncomes.map(income => (
+                  <CSSTransition key={income._id} timeout={500} classNames={s}>
+                    <IncomesListItem id={income._id} {...income} />
+                  </CSSTransition>
                 ))}
-            </ul>
+            </TransitionGroup>
           </div>
         </>
       )}
