@@ -1,0 +1,153 @@
+@import 'styles/shared.scss';
+
+.reportExpensesContainer {
+  margin-bottom: 35px;
+
+  @include tablet {
+    order: 5;
+    width: 670px;
+    margin-bottom: 30px;
+    padding: 20px 30px 30px 30px;
+    background-color: $white;
+    border-radius: 30px;
+    box-shadow: $shadowProductFormBox;
+  }
+
+  @include desktop {
+    width: 100%;
+    padding: 20px 223px 30px 223px;
+  }
+}
+
+.reportExpensesBox {
+  display: flex;
+  align-items: center;
+}
+
+.reportExpensesList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @include tablet {
+    justify-content: center;
+  }
+}
+
+.reportExpensesItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 94px;
+  height: 140px;
+  margin-bottom: 20px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $lightGray8;
+  cursor: pointer;
+
+  @include tablet {
+    width: 84px;
+    height: 113px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    border-bottom: none;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+}
+
+.reportExpensesItem:nth-child(10) {
+  @include mobile {
+    margin-bottom: 0;
+  }
+}
+
+.reportExpensesItem:nth-child(11) {
+  @include mobile {
+    margin-bottom: 0;
+  }
+}
+
+.reportExpensesItem:nth-child(-n + 3) {
+  @include mobile {
+    padding-right: 15px;
+    margin-bottom: 20px;
+  }
+}
+
+.reportExpensesItem:nth-child(3n) {
+  @include mobile {
+    padding-right: 0;
+  }
+}
+
+.reportExpensesItem:nth-child(6n) {
+  @include tablet {
+    margin-right: 0;
+  }
+}
+
+.reportExpensesItem:nth-child(n + 7) {
+  @include tablet {
+    margin-bottom: 0;
+  }
+}
+
+.reportExpensesItem:last-child {
+  padding-right: 0;
+
+  @include tablet {
+    width: 94px;
+
+    margin-right: 0;
+  }
+}
+
+.reportExpensesCount {
+  margin-bottom: 15px;
+  @include fontProperty($transform: uppercase);
+}
+
+.reportExpensesIconBox {
+  position: relative;
+
+  width: 59px;
+  height: 46px;
+  background-color: $lightGray1;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  transition: background-color 0.25s $cubicBezier;
+}
+
+.reportExpensesIconBox:hover,
+.reportExpensesIconBox:focus {
+  background-color: #ffdac0;
+  transition: background-color 0.25s $cubicBezier;
+}
+
+.reportExpensesIcon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  width: 58px;
+  height: 58px;
+  transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 10;
+
+  transition: fill 0.25s $cubicBezier;
+}
+
+.reportExpensesIconBox:hover svg,
+.reportExpensesIconBox:focus svg {
+  fill: $orange;
+
+  transition: fill 0.25s $cubicBezier;
+}
+
+.reportExpensesTitle {
+  @include fontProperty($transform: uppercase, $letter-spacing: 0.02em);
+}

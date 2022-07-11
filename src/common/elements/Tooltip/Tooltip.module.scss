@@ -1,0 +1,52 @@
+@import 'styles/shared.scss';
+
+.tooltipBox {
+  position: absolute;
+  top: 171px;
+  left: 19px;
+  width: 282px;
+  height: 163px;
+  padding: 30px 30px;
+  background: $backgroundBalanceBox;
+  border-radius: 30px;
+  z-index: 2;
+
+  @include tablet {
+    top: 97px;
+    left: 110px;
+  }
+
+  @include desktop {
+    left: 575px;
+  }
+}
+
+.tooltipBox::before {
+  position: absolute;
+  content: '';
+  background-color: $blue;
+  left: 20%;
+  width: 20px;
+  height: 20px;
+  top: -8px;
+  transform: rotate(45deg);
+}
+
+.tooltipText {
+  @include fontProperty(
+    $color: $white,
+    $size: 14px,
+    $height: 1.43,
+    $text-align: left
+  );
+}
+.tooltipTextComment {
+  margin-top: 20px;
+
+  @include fontProperty(
+    $color: $white,
+    $size: 12px,
+    $height: 1.33,
+    $text-align: left
+  );
+}

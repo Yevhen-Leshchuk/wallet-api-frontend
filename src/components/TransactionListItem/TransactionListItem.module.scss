@@ -1,0 +1,207 @@
+@import 'styles/shared.scss';
+
+.expListItem,
+.incListItem {
+  position: relative;
+  width: 282px;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  padding-bottom: 7px;
+
+  border-bottom: 2px solid $lightGray1;
+
+  @include tablet {
+    width: 599px;
+    min-height: 40px;
+    padding-bottom: 0;
+  }
+
+  @include desktop {
+    width: 754px;
+  }
+}
+
+.expListItemBox,
+.incListItemBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet {
+    justify-content: normal;
+    padding: 10px 20px 10px 30px;
+  }
+
+  @include desktop {
+    padding: 10px 30px 10px 40px;
+  }
+}
+
+.expListItemDesc,
+.incListItemDesc {
+  position: absolute;
+  top: 3px;
+  left: 0;
+
+  width: 168px;
+  height: 28px;
+  overflow: hidden;
+
+  @include fontProperty($weight: 700, $text-align: left);
+
+  @include tablet {
+    position: static;
+    order: 2;
+    width: 132px;
+    height: 14px;
+    margin-right: 60px;
+    overflow: hidden;
+
+    @include fontProperty($size: 12px, $height: 1.17, $text-align: left);
+  }
+
+  @include desktop {
+    margin-right: 115px;
+  }
+}
+
+.expListItemDate,
+.incListItemDate {
+  width: 70px;
+  margin-top: 32px;
+  margin-right: 20px;
+
+  @include fontProperty(
+    $size: 8px,
+    $height: 1.125,
+    $transform: uppercase,
+    $text-align: left
+  );
+
+  @include tablet {
+    order: 1;
+    width: 90px;
+    margin-top: 0;
+    margin-right: 75px;
+
+    @include fontProperty($size: 12px, $height: 1.17, $text-align: left);
+  }
+
+  @include desktop {
+    width: 130px;
+  }
+}
+
+.expListItemCategory,
+.incListItemCategory {
+  min-width: 30px;
+  margin-top: 32px;
+  margin-right: 30px;
+
+  @include fontProperty($size: 8px, $height: 1.125, $transform: uppercase);
+
+  @include tablet {
+    order: 3;
+    width: 100px;
+    margin-top: 0;
+    margin-right: 60px;
+
+    @include fontProperty($size: 12px, $height: 1.17, $text-align: left);
+  }
+
+  @include desktop {
+    margin-right: 75px;
+  }
+}
+
+.expListItemPrice {
+  width: 150px;
+
+  margin-top: auto;
+  margin-right: 20px;
+  margin-bottom: auto;
+
+  @include fontProperty($weight: 700, $color: $red1, $text-align: right);
+
+  @include tablet {
+    width: 100px;
+    order: 4;
+    margin-top: 0;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    margin-right: 50px;
+  }
+}
+
+.incListItemPrice {
+  composes: expListItemPrice;
+  @include fontProperty($weight: 700, $color: $green, $text-align: right);
+}
+
+.expListItemBtnBox,
+.incListItemBtnBox {
+  width: 18px;
+  height: 18px;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  @include tablet {
+    order: 5;
+    margin: 0;
+  }
+
+  @include desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: $lightGray1;
+    transition: background-color 0.25s $cubicBezier;
+    cursor: pointer;
+  }
+}
+
+.expListItemBtnBox:hover,
+.incListItemBtnBox:hover,
+.expListItemBtnBox:focus,
+.incListItemBtnBox:focus {
+  @include desktop {
+    background-color: $orangeLight;
+    transition: background-color 0.25s $cubicBezier;
+  }
+}
+
+.expListItemBtn,
+.incListItemBtn {
+  width: 18px;
+  height: 18px;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.expListItemIcon,
+.incListItemIcon {
+  width: 18px;
+  height: 18px;
+
+  fill: $darkGray;
+  transition: fill 0.25s $cubicBezier;
+}
+
+.expListItemBtn:hover svg,
+.expListItemBtn:focus svg,
+.incListItemBtn:hover svg,
+.incListItemBtn:focus svg {
+  fill: $orange;
+
+  transition: fill 0.25s $cubicBezier;
+}

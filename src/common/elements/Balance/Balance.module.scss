@@ -1,0 +1,87 @@
+@import 'styles/shared.scss';
+
+.balanceBox {
+  margin-bottom: 40px;
+
+  @include tablet() {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 0;
+  }
+
+  @include desktop() {
+    margin-right: 205px;
+  }
+}
+
+.balanceForm {
+  @include desktop() {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.balanceTitle {
+  margin-bottom: 6px;
+
+  @include fontProperty($weight: 500, $letter-spacing: 0.02em);
+
+  @include tablet() {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+}
+
+.balanceFormInput {
+  width: 125px;
+  height: 44px;
+  padding: 12px 17px;
+
+  border: 2px solid $white;
+  border-right: 1px solid $white;
+  border-radius: 22px 0px 0px 22px;
+  background: transparent;
+
+  @include fontProperty($weight: 700, $color: $black, $letter-spacing: 0.02em);
+
+  &::placeholder {
+    opacity: 1;
+  }
+
+  @include tablet() {
+    margin-right: 15px;
+    border: 2px solid $white;
+    border-radius: 22px 22px 22px 22px;
+  }
+}
+
+.balanceFormBtn {
+  width: 125px;
+  height: 44px;
+  padding: 12px 17px;
+
+  border: 2px solid $white;
+  border-left: 1px solid $white;
+  border-radius: 0px 22px 22px 0px;
+  background: transparent;
+  cursor: pointer;
+
+  @include fontProperty($transform: uppercase, $letter-spacing: 0.02em);
+
+  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+
+  @include tablet() {
+    border: 2px solid $white;
+    border-radius: 22px 22px 22px 22px;
+  }
+}
+
+.balanceFormBtn:hover,
+.balanceFormBtn:focus {
+  background-color: $orange;
+  color: $white;
+  border: $orange;
+
+  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+}

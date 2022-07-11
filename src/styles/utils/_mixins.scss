@@ -1,0 +1,42 @@
+@mixin containerMedia($mobile) {
+  margin: 0 auto;
+  width: $mobile;
+}
+
+@mixin fontProperty(
+  $font-family: Roboto,
+  $color: $darkGray,
+  $weight: 400,
+  $size: 12px,
+  $height: 1.17,
+  $transform: none,
+  $text-align: center,
+  $letter-spacing: 0.04em
+) {
+  font-family: $font-family;
+  color: $color;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  letter-spacing: $letter-spacing;
+  text-transform: $transform;
+  text-align: $text-align;
+}
+
+@mixin mobile {
+  @media screen and (min-width: 0px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}

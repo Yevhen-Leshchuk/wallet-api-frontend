@@ -1,0 +1,95 @@
+@import 'styles/shared.scss';
+
+.expListBox,
+.incListBox {
+  width: 607px;
+  height: 346px;
+  border: 2px solid $lightGray1;
+  border-top: none;
+  border-right: 6px solid #f5f6fb;
+  border-bottom: none;
+
+  @include desktop {
+    width: 760px;
+  }
+}
+
+.expListHeader,
+.incListHeader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 607px;
+  height: 40px;
+  margin-top: 50px;
+  background-color: $lightGray1;
+  border-radius: 22px 22px 0px 0px;
+
+  @include desktop {
+    width: 760px;
+    margin-top: 0;
+  }
+}
+
+.expListHeaderItem,
+.incListHeaderItem {
+  @include fontProperty(
+    $weight: 700,
+    $transform: uppercase,
+    $letter-spacing: 0.02em,
+    $color: $black
+  );
+}
+
+.expListItemBox,
+.incListItemBox {
+  height: 300px;
+  overflow-y: scroll;
+
+  @include tablet {
+    width: 605px;
+    height: 346px;
+  }
+
+  @include desktop {
+    width: 760px;
+  }
+}
+
+.expListItemBox::-webkit-scrollbar,
+.incListItemBox::-webkit-scrollbar {
+  width: 6px;
+
+  border-radius: 2px;
+  background: transparent;
+}
+
+.expListItemBox::-webkit-scrollbar-thumb,
+.incListItemBox::-webkit-scrollbar-thumb {
+  background-color: $orange;
+  border-radius: 2px;
+  height: 130px;
+}
+
+.enter {
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.enterActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 500ms linear;
+}
+
+.exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.exitActive {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: all 500ms linear;
+}

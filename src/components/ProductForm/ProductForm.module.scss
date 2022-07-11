@@ -1,0 +1,329 @@
+@import 'styles/shared.scss';
+
+.productFormBox {
+  @include tablet {
+    display: flex;
+
+    width: 604px;
+  }
+
+  @include desktop {
+    width: 100%;
+    margin-right: 25px;
+    margin-bottom: 60px;
+  }
+}
+
+.productForm {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include desktop {
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+}
+
+.productFormDescInput {
+  width: 282px;
+  height: 44px;
+  padding: 2px 20px 2px 20px;
+
+  background-color: transparent;
+  border: 2px solid $white;
+  border-bottom: 1px solid $white;
+  border-radius: 22px 22px 0px 0px;
+
+  @include fontProperty(
+    $weight: 700,
+    $color: $darkGray,
+    $letter-spacing: 0.02em
+  );
+
+  &::placeholder {
+    @include fontProperty(
+      $color: $lightGray6,
+      $letter-spacing: 0.02em,
+      $text-align: left
+    );
+  }
+
+  @include tablet {
+    order: 1;
+
+    width: 192px;
+    border: 2px solid $lightGray1;
+    border-right: 1px solid $lightGray1;
+    border-radius: 22px 0px 0px 0px;
+  }
+
+  @include desktop {
+    width: 290px;
+  }
+}
+
+.productFormCategoryLabel {
+  position: relative;
+
+  @include tablet {
+    order: 2;
+  }
+}
+
+.productFormCategoryInput {
+  composes: productFormDescInput;
+  margin-bottom: 30px;
+
+  border-radius: 0px 0px 22px 0px;
+  border-top: 1px solid $white;
+  border-bottom: 2px solid $white;
+
+  @include fontProperty(
+    $weight: 700,
+    $color: $darkGray,
+    $letter-spacing: 0.02em
+  );
+
+  @include tablet {
+    width: 171px;
+    margin-bottom: 0;
+
+    border-radius: 0;
+    border: 2px solid $lightGray1;
+    border-left: 1px solid $lightGray1;
+    border-right: 1px solid $lightGray1;
+  }
+
+  @include desktop {
+    width: 190px;
+  }
+}
+
+.arrowDownIconBox {
+  position: absolute;
+  top: -3px;
+  right: 20px;
+
+  width: 10px;
+  height: 10px;
+
+  border-style: none;
+  background: transparent;
+  cursor: pointer;
+
+  @include tablet {
+    top: 13px;
+  }
+}
+
+.arrowDownIcon {
+  width: 10px;
+  height: 10px;
+
+  transition: stroke 0.25s $cubicBezier;
+  stroke: $lightGray6;
+}
+
+.arrowUpIconBox {
+  composes: arrowDownIconBox;
+}
+
+.arrowUpIcon {
+  composes: arrowDownIcon;
+}
+
+.arrowDownIconBox:hover svg,
+.arrowDownIconBox:focus svg {
+  stroke: $orange;
+
+  transition: stroke 0.25s $cubicBezier;
+}
+
+.calculatorIconBox {
+  width: 17px;
+  height: 20px;
+}
+
+.calculatorIcon {
+  width: 17px;
+  height: 20px;
+}
+
+.productFormListBox {
+  width: 282px;
+  max-height: 365px;
+  position: absolute;
+  top: 27px;
+  left: 0;
+
+  background-color: $white;
+  z-index: 999;
+
+  overflow-y: scroll;
+  border: 2px solid $lightGray1;
+  border-top: transparent;
+  box-shadow: $shadowCategoryBox;
+
+  @include tablet {
+    width: 171px;
+    top: 44px;
+  }
+
+  @include desktop {
+    width: 190px;
+  }
+}
+
+.productFormListItem {
+  width: 100%;
+  height: 34px;
+  padding: 10px 20px;
+
+  @include fontProperty($color: $lightGray6, $text-align: left);
+
+  &:hover {
+    background-color: $lightGray1;
+    @include fontProperty($color: $darkGray, $text-align: left);
+  }
+}
+
+.productAmountBox {
+  display: flex;
+  align-items: center;
+
+  width: 183px;
+  height: 44px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 150px;
+
+  @include tablet {
+    order: 3;
+    width: 105px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    width: 126px;
+    margin-right: 30px;
+  }
+}
+
+.productAmountInput {
+  width: 121px;
+  height: 44px;
+
+  padding: 15px 15px 15px 45px;
+
+  border: 2px solid $white;
+  border-right: 1px solid $white;
+  border-radius: 22px 0px 0px 22px;
+  background-color: transparent;
+
+  @include fontProperty(
+    $weight: 700,
+    $color: $black,
+    $letter-spacing: 0.02em,
+    $text-align: left,
+    $transform: uppercase
+  );
+
+  &::placeholder {
+    opacity: 1;
+    color: $lightGray6;
+  }
+
+  @include tablet {
+    width: 65px;
+    padding: 15px 10px 15px 10px;
+
+    border: 2px solid $lightGray1;
+    border-right: 1px solid transparent;
+    border-left: 1px solid $lightGray1;
+    border-radius: 0;
+  }
+}
+
+.calculatorIconBox {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 56px;
+  height: 44px;
+
+  border: 2px solid $white;
+  border-left: 1px solid $white;
+  border-radius: 0px 22px 22px 0px;
+  background-color: transparent;
+
+  @include tablet {
+    width: 40px;
+
+    border: 2px solid $lightGray1;
+    border-left: 1px solid $white;
+  }
+}
+
+.buttonInputBox {
+  @include tablet {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 20px;
+    order: 4;
+  }
+  @include desktop {
+    margin-top: 0px;
+    margin-left: 0px;
+    order: 4;
+  }
+}
+
+.buttonInput {
+  width: 125px;
+  height: 44px;
+  margin-right: 15px;
+
+  @include fontProperty(
+    $transform: uppercase,
+    $weight: 700,
+    $letter-spacing: 0.02em
+  );
+
+  color: $darkGray;
+  background-color: $lightGray1;
+
+  border: 2px solid $lightGray5;
+  border-radius: 16px;
+  box-shadow: $btnShadowNormal;
+  outline: none;
+  cursor: pointer;
+
+  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+
+  @include tablet {
+    background-color: transparent;
+    border: 2px solid $lightGray5;
+    box-shadow: none;
+  }
+}
+
+.buttonClear {
+  composes: buttonInput;
+  margin-right: 0;
+}
+
+.buttonInput:hover,
+.buttonInput:focus,
+.buttonClear:hover,
+.buttonClear:focus {
+  background-color: $orange;
+  color: $white;
+  border: $orange;
+
+  transition: border-color 0.25s, background-color 0.25s $cubicBezier;
+}

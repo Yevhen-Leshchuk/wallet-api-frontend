@@ -1,0 +1,39 @@
+@import 'styles/shared.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 20px;
+  height: 56px;
+  background-color: $white;
+
+  @include tablet() {
+    padding: 13px 50px;
+  }
+}
+
+.logoBox {
+  width: 90px;
+  height: 30px;
+  margin: 0;
+
+  background-image: url(../../images/img/auth-page/logo-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    background-image: url(../../images/img/auth-page/logo-mobile-2x.png);
+  }
+
+  @include tablet() {
+    background-image: url(../../images/img/auth-page/logo-tablet.png);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(../../images/img/auth-page/logo-tablet-2x.png);
+    }
+  }
+}
