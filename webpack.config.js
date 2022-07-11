@@ -1,7 +1,11 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin({
+      ignoreOrder: true,
+    }),
+  ],
   module: {
     rules: [
       {
