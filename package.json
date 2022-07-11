@@ -42,8 +42,7 @@
     "predeploy": "npm run build",
     "deploy": "netlify deploy -p",
     "lint:js": "eslint src/**/*.js"
-    },
-
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -66,6 +65,7 @@
     "eslint": "^8.17.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
+    "mini-css-extract-plugin": "^2.6.1",
     "prettier": "^2.6.2"
   },
   "lint-staged": {
