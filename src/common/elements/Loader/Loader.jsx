@@ -1,15 +1,10 @@
-import { FallingLines } from 'react-loader-spinner';
+import HashLoader from 'react-spinners/HashLoader';
 import s from './Loader.module.scss';
 
 const Loader = () => {
   return (
     <div className={s.LoaderBox}>
-      <FallingLines
-        ariaLabel="loading-indicator"
-        color="#FC842D"
-        height={100}
-        width={100}
-      />
+      <HashLoader color="#FC842D" size={80} speedMultiplier={1} />
     </div>
   );
 };
