@@ -21,6 +21,9 @@ const MobilePage = () => {
   const expensesList = useSelector(transactionSelectors.getExpensesData);
   const dispatch = useDispatch();
 
+  const reverseIncomes = incomesList?.map(income => income).reverse();
+  const reverseExpenses = expensesList?.map(expense => expense).reverse();
+
   useEffect(() => {
     dispatch(transactionOperations.getIncomesData());
     dispatch(transactionOperations.getExpensesData());
@@ -35,12 +38,12 @@ const MobilePage = () => {
 
       {mobileMediaQuery && (
         <ul className={s.expListItemBox}>
-          {expensesList &&
-            expensesList.map(expense => (
+          {reverseExpenses &&
+            reverseExpenses.map(expense => (
               <ExpensesListItem key={expense._id} {...expense} />
             ))}
-          {incomesList &&
-            incomesList.map(income => (
+          {reverseIncomes &&
+            reverseIncomes.map(income => (
               <IncomesListItem key={income._id} {...income} />
             ))}
         </ul>
