@@ -8,7 +8,6 @@ import sprite from '../../images/svg/sprite.svg';
 import s from './ReportExpenses.module.scss';
 
 const ReportExpenses = () => {
-  // const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const [expenseCategory, setExpenseCategory] = useState([]);
   const [expenseValue, setExpenseValue] = useState([]);

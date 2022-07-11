@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import transactionOperations from './transaction-operations';
+import { authOperations } from 'redux/auth';
 
 const initialState = {
   incomeCategories: [],
   expenseCategories: [],
 
-  expense: {
+  income: {
     description: '',
     category: '',
     amount: '',
     date: '',
   },
 
-  income: {
+  expense: {
     description: '',
     category: '',
     amount: '',
@@ -110,8 +111,40 @@ const transactionSlice = createSlice({
       state.isDeleteIncomeItem = true;
       state.error = null;
     },
+
     [transactionOperations.deleteIncomeItem.rejected](state, action) {
       state.error = action.payload;
+    },
+
+    [authOperations.logOut.fulfilled](state, action) {
+      state.incomeCategories = [];
+      state.expenseCategories = [];
+      state.income = {
+        description: '',
+        category: '',
+        amount: '',
+        date: '',
+      };
+      state.expense = {
+        description: '',
+        category: '',
+        amount: '',
+        date: '',
+      };
+
+      state.incomesData = {
+        incomes: null,
+        monthsStats: null,
+      };
+      state.expensesData = {
+        incomes: null,
+        monthsStats: null,
+      };
+      state.isAddIncomeItem = false;
+      state.isDeleteIncomeItem = false;
+      state.isAddExpenseItem = false;
+      state.isDeleteExpenseItem = false;
+      state.error = null;
     },
   },
 });

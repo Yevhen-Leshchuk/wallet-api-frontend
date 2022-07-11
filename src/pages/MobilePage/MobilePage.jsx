@@ -17,7 +17,6 @@ import s from './MobilePage.module.scss';
 const MobilePage = () => {
   let balance = useSelector(authSelectors.getBalance);
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
-  // const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
   const incomesList = useSelector(transactionSelectors.getIncomesData);
   const expensesList = useSelector(transactionSelectors.getExpensesData);
   const dispatch = useDispatch();

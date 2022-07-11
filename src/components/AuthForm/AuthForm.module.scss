@@ -67,47 +67,6 @@
   }
 }
 
-// .logoBox:hover {
-//   background-color: #ffe3d2;
-//   border-radius: 50%;
-//   box-shadow: 0 0 20px -5px $orange;
-// }
-
-// .buttonGoogle {
-//   display: flex;
-//   align-items: center;
-//   width: 125px;
-//   height: 44px;
-//   padding: 10px 20px;
-//   margin-top: 24px;
-//   margin-bottom: 30px;
-
-//   color: $darkGray;
-//   background-color: $lightGray1;
-
-//   border: 2px solid $lightGray5;
-//   border-radius: 16px;
-//   box-shadow: $btnShadowNormal;
-//   outline: none;
-//   cursor: pointer;
-// }
-
-// .googleLogo {
-//   width: 17px;
-//   height: 18px;
-//   margin-right: 10px;
-
-//   background-image: url(../../images/img/auth-page/google-logo.png);
-//   background-repeat: no-repeat;
-//   background-size: cover;
-
-//   @media screen and (min-device-pixel-ratio: 2),
-//     screen and (min-resolution: 192dpi),
-//     screen and (min-resolution: 2dppx) {
-//     background-image: url(../../images/img/auth-page/google-logo-2x.png);
-//   }
-// }
-
 .btnText {
   @include fontProperty(
     $color: $black,
@@ -117,14 +76,6 @@
     $letter-spacing: 0.02em
   );
 }
-
-// .googleText {
-//   @include fontProperty($size: 10px, $height: 1.12);
-
-//   @include tablet() {
-//     @include fontProperty($size: 12px, $height: 1.17);
-//   }
-// }
 
 .authText {
   @include fontProperty($size: 10px, $height: 1.12);

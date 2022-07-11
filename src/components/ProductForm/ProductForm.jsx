@@ -9,6 +9,7 @@ import useMediaQuery from 'common/hooks/mediaRulesHook';
 import { dateSelectors } from 'redux/date';
 import { transactionOperations } from 'redux/transaction';
 import { authSelectors } from 'redux/auth';
+import { errorMessage } from 'common/notifications/notification';
 import s from './ProductForm.module.scss';
 
 const ProductForm = ({ incomesCategories, expenseCategories }) => {
@@ -24,7 +25,6 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
   const [categoryItem, setCategoryItem] = useState('');
 
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
 
   const handleShowCategory = () => {
@@ -39,7 +39,6 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
         setDescription(value);
         break;
       case 'category':
-        setCategory(value);
         break;
       case 'amount':
         setAmount(value);
@@ -75,8 +74,8 @@ const ProductForm = ({ incomesCategories, expenseCategories }) => {
 
     if (activeLocation === '/expenses') {
       if (amount > balance) {
+        errorMessage('Транзакция превышает сумму на вашем счету!');
         return;
-        //Вставить нотификашку -"транзакция превышает баланс!"
       }
       dispatch(transactionOperations.addExpense(submittedformData));
       dispatch(transactionOperations.getExpensesData());

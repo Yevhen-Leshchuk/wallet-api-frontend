@@ -22,38 +22,27 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [authOperations.register.pending](state, action) {
-      state.isFetching = true;
-    },
     [authOperations.register.fulfilled](state, action) {
       state.userData.email = action.payload.email;
       state.userData.id = action.payload.id;
-      state.isFetching = false;
       state.error = null;
     },
     [authOperations.register.rejected](state, action) {
       state.error = action.payload;
     },
 
-    [authOperations.logIn.pending](state, action) {
-      state.isFetching = true;
-    },
     [authOperations.logIn.fulfilled](state, action) {
       state.userData = action.payload.userData;
       state.sid = action.payload.sid;
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.isLoggedIn = true;
-      state.isFetching = false;
       state.error = null;
     },
     [authOperations.logIn.rejected](state, action) {
       state.error = action.payload;
     },
 
-    [authOperations.logOut.pending](state, action) {
-      state.isFetching = true;
-    },
     [authOperations.logOut.fulfilled](state) {
       state.userData = {
         id: null,
@@ -65,21 +54,16 @@ const authSlice = createSlice({
       state.accessToken = null;
       state.refreshToken = null;
       state.isLoggedIn = false;
-      state.isFetching = false;
       state.error = null;
     },
     [authOperations.logOut.rejected](state, action) {
       state.error = action.payload;
     },
 
-    [authOperations.refresh.pending](state, action) {
-      state.isFetching = true;
-    },
     [authOperations.refresh.fulfilled](state, action) {
       state.accessToken = action.payload.newAccessToken;
       state.refreshToken = action.payload.newRefreshToken;
       state.sid = action.payload.newSid;
-      state.isFetching = false;
       state.error = null;
     },
     [authOperations.refresh.rejected](state, action) {
@@ -99,14 +83,11 @@ const authSlice = createSlice({
     },
     [authOperations.getUser.rejected](state, action) {
       state.error = action.payload;
+      state.isFetching = false;
     },
 
-    [authOperations.updateUserBalance.pending](state, action) {
-      state.isFetching = true;
-    },
     [authOperations.updateUserBalance.fulfilled](state, action) {
       state.userData.balance = action.payload.newBalance;
-      state.isFetching = false;
       state.error = null;
     },
     [authOperations.updateUserBalance.rejected](state, action) {
@@ -115,25 +96,21 @@ const authSlice = createSlice({
 
     [transactionOperations.addIncome.fulfilled](state, action) {
       state.userData.balance = action.payload.newBalance;
-      state.isFetching = false;
       state.error = null;
     },
 
     [transactionOperations.addExpense.fulfilled](state, action) {
       state.userData.balance = action.payload.newBalance;
-      state.isFetching = false;
       state.error = null;
     },
 
     [transactionOperations.deleteIncomeItem.fulfilled](state, action) {
       state.userData.balance = action.payload.newBalance;
-      state.isFetching = false;
       state.error = null;
     },
 
     [transactionOperations.deleteExpenseItem.fulfilled](state, action) {
       state.userData.balance = action.payload.newBalance;
-      state.isFetching = false;
       state.error = null;
     },
   },

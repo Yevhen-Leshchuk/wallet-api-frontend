@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import reportOperations from './report-operations';
+import { authOperations } from 'redux/auth';
 
 const initialState = {
   expenses: {
@@ -31,6 +32,17 @@ const reportSlice = createSlice({
     },
     [reportOperations.getExpensesReport.rejected](state, action) {
       state.error = action.payload;
+    },
+    [authOperations.logOut.fulfilled](state, action) {
+      state.incomes = {
+        expenseTotal: null,
+        expensesData: {},
+      };
+      state.expenses = {
+        expenseTotal: null,
+        expensesData: {},
+      };
+      state.error = null;
     },
   },
 });

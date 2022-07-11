@@ -1,10 +1,9 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { authOperations, authSelectors } from 'redux/auth';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/auth';
 import sprite from '../../images/svg/sprite.svg';
 import s from './AuthForm.module.scss';
 
@@ -38,23 +37,11 @@ const AuthForm = () => {
 
   return (
     <div className={s.formBox}>
-      {/* <p className={s.googleText}>Вы можете авторизоваться c помощью</p>
-      <p className={s.googleText}>Google Account:</p>
-      <button
-        type="submit"
-        className={s.buttonGoogle}
-        onClick={() => dispatch(authOperations.googleLogIn())}
-      >
-        <div className={s.googleLogo}></div>
-        <p className={s.btnText}>Google</p>
-      </button> */}
       <div className={s.logoBox}>
         <svg className={s.logoIcon}>
           <use xlinkHref={`${sprite}#cabbage`} />
         </svg>
       </div>
-      {/* <p className={s.googleText}>Зайдите c помощью e-mail и пароля,</p>
-      <p className={s.googleText}>предварительно зарегистрировавшись:</p> */}
 
       <Formik
         initialValues={initialValues}

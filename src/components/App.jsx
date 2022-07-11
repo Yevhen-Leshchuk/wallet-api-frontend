@@ -2,12 +2,13 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { ToastContainer, Zoom } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { authOperations, authSelectors } from 'redux/auth';
 import Layout from './Layout';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import PrivateRoute from 'routes/PrivateRoute';
 import PublicRoute from 'routes/PublicRoute';
+import Loader from 'common/elements/Loader';
 
 const AuthPage = lazy(() =>
   import('pages/AuthPage/AuthPage' /* webpackChunkName: "AuthPage" */)
@@ -37,21 +38,19 @@ function App() {
   const location = useLocation();
   const activeLocation = location.pathname;
   const error = useSelector(authSelectors.getAuthError);
+  const isFetching = useSelector(authSelectors.getIsFetching);
   const mobileMediaQuery = useMediaQuery('(min-width: 768px)');
 
   useEffect(() => {
     if (error?.message === 'Request failed with status code 401') {
-      dispatch(authOperations.logOut());
+      console.log('return');
+      dispatch(authOperations.refresh());
     }
   }, [dispatch, navigate, error]);
 
   useEffect(() => {
-    if (error?.message === 'Request failed with status code 401') {
-      return;
-    }
-
     dispatch(authOperations.getUser());
-  }, [dispatch, error]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (mobileMediaQuery && activeLocation === '/mobile') {
@@ -61,17 +60,20 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route
-              path="/"
-              element={
-                <PublicRoute restricted redirectTo="/expenses">
-                  <AuthPage />
-                </PublicRoute>
-              }
-            />
+            {!isFetching && (
+              <Route
+                path="/"
+                element={
+                  <PublicRoute restricted redirectTo="/expenses">
+                    <AuthPage />
+                  </PublicRoute>
+                }
+              />
+            )}
+
             <Route
               path="expenses"
               element={

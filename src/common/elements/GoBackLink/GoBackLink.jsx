@@ -5,7 +5,6 @@ import sprite from '../../../images/svg/sprite.svg';
 import s from './GoBackLink.module.scss';
 
 const GoBackLink = ({ redirectTo = '/', alt = 'mobilePage' }) => {
-  const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
   const tabletMediaQuery = useMediaQuery('(min-width: 768px)');
 
   return (

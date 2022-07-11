@@ -11,8 +11,8 @@ const useMediaQuery = query => {
     const listener = () => {
       setMatches(media.matches);
     };
-    media.addListener(listener);
-    return () => media.removeListener(listener);
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
   }, [matches, query]);
 
   return matches;
@@ -23,9 +23,3 @@ useMediaQuery.propTypes = {
 };
 
 export default useMediaQuery;
-
-// после импорта в компоненте создается переменная следующего формата:
-//   let isPageWideMobile = useMediaQuery("(min-width: 320px)");
-// имя переменной произвольное, медиа-правило выставляетя самостоятельно
-// Рендер компонента производится стандартно:
-//   {isPageWideMobile && <p>Width 320</p>}

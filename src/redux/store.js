@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// import logger from 'redux-logger';
+import logger from 'redux-logger';
 import { authReducer } from './auth';
 import { transactionReducer } from './transaction';
 import { selectedDateReducer } from './date/date-slice';
@@ -22,7 +22,7 @@ const middleware = getDefaultMiddleware => [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  // logger,
+  logger,
 ];
 
 const authPersistConfig = {
