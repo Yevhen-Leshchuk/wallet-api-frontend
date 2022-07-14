@@ -12,6 +12,7 @@ const Calendar = () => {
   const date = useSelector(dateSelectors.getSelectedDate);
 
   const handleChangeDate = date => {
+    console.log(date);
     dispatch(
       selectedDate(
         date.toISOString().slice(0, 10).split('.').reverse().join('-')
