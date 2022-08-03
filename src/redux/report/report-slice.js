@@ -11,6 +11,7 @@ const initialState = {
     incomesTotal: null,
     incomesData: {},
   },
+
   error: null,
 };
 

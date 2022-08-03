@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Chart as ChartJS,
@@ -14,6 +15,19 @@ ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 const Chart = ({ chartData, transactionCategory, expenseValue, event }) => {
   const mobileMediaQuery = useMediaQuery('(max-width: 767px)');
+  const [eventData, setEventData] = useState(null);
+
+  useEffect(() => {
+    if (expenseValue.length === 0) {
+      setEventData(null);
+    }
+  }, [expenseValue.length]);
+
+  useEffect(() => {
+    if (expenseValue.length > 0) {
+      setEventData(event);
+    }
+  }, [expenseValue.length, event]);
 
   const chooseBgColor = arr => {
     return arr.map((_, index) => (index % 3 === 0 ? '#FF751D' : '#FFDAC0'));
@@ -29,19 +43,19 @@ const Chart = ({ chartData, transactionCategory, expenseValue, event }) => {
     transactionCategory ? property[1].total : property[1]
   );
 
-  const getTransactionData = (event, transactionValue) => {
-    return event ? expenseValue : transactionValue;
+  const getTransactionData = (eventData, transactionValue) => {
+    return eventData ? expenseValue : transactionValue;
   };
 
-  const transactionData = getTransactionData(event, transactionValue);
+  const transactionData = getTransactionData(eventData, transactionValue);
 
   const labelsOfCategory = sortedData.map(property => property[0]);
 
-  const getLabels = (event, labelsOfCategory) => {
-    return event ? transactionCategory : labelsOfCategory;
+  const getLabels = (eventData, labelsOfCategory) => {
+    return eventData ? transactionCategory : labelsOfCategory;
   };
 
-  const labels = getLabels(event, labelsOfCategory);
+  const labels = getLabels(eventData, labelsOfCategory);
 
   const getMaxValueFromData = dataArr => {
     let maxValue = 0;

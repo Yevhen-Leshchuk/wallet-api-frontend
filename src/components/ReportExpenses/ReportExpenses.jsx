@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
 import ReportNavTransaction from 'common/elements/ReportNavTransaction';
@@ -14,6 +14,16 @@ const ReportExpenses = () => {
   const [event, setEvent] = useState(null);
 
   const expensesData = useSelector(reportSelectors.getExpensesData);
+  const expensesArr = Object.entries(expensesData);
+
+  useEffect(() => {
+    if (expensesArr.length > 0) {
+      return;
+    }
+
+    setExpenseCategory([]);
+    setExpenseValue([]);
+  }, [expensesArr.length]);
 
   const onExpenseItem = (event, item) => {
     event.preventDefault();
@@ -53,6 +63,7 @@ const ReportExpenses = () => {
           </ul>
         </div>
       </div>
+
       <Chart
         chartData={expensesData}
         transactionCategory={expenseCategory}

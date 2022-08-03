@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import sprite from '../../images/svg/sprite.svg';
 import useMediaQuery from 'common/hooks/mediaRulesHook';
@@ -14,6 +14,16 @@ const ReportIncomes = () => {
   const [event, setEvent] = useState(null);
 
   const incomesData = useSelector(reportSelectors.getIncomesData);
+  const incomesArr = Object.entries(incomesData);
+
+  useEffect(() => {
+    if (incomesArr.length > 0) {
+      return;
+    }
+
+    setIncomeCategory([]);
+    setIncomeValue([]);
+  }, [incomesArr.length]);
 
   const onIncomeItem = (event, item) => {
     event.preventDefault();
